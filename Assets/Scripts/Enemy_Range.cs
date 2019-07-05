@@ -82,7 +82,7 @@ public class Enemy_Range : MonoBehaviour {
     void OnTriggerEnter2D (Collider2D other) {
         string otherTag = other.tag;
         Debug.Log (otherTag);
-        if (otherTag == "Player" || otherTag == "playerBullet") {
+        if (otherTag == "Character" || otherTag == "CharacterBullet") {
             isDead = true;
             // TODO : Destroy the enemy
             Destroy (this.gameObject);

@@ -54,7 +54,7 @@ public class Enemy_Close : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other) {
         string otherTag = other.tag;
-        if (otherTag == "Player" || otherTag == "playerBullet") {
+        if (otherTag == "Character" || otherTag == "CharacterBullet") {
             isDead = true;
             // TODO : Destroy the enemy
             Destroy (this);
