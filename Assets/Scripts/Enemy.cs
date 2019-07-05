@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour {
         // 面向玩家
         transform.localEulerAngles = new Vector3 (0, 0, Vector3.SignedAngle (Vector3.up, direction, Vector3.forward));
         // 位移
-        rb.velocity = direction * followSpeed * Time.deltaTime;
+        rb.velocity = direction * followSpeed;
     }
     // 死亡
     protected void death (Collider2D other) {
