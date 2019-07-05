@@ -62,6 +62,3 @@ sysinfo.txt
 crashlytics-build.properties
 
 .vscode/
-
-Assets/Scenes/DebugScene.unity*
-Assets/Debugs/
