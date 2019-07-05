@@ -59,10 +59,24 @@ public class Enemy_Range : MonoBehaviour {
         rb.velocity = direction * followSpeed * Time.deltaTime;
     }
 
+    public GameObject triBulletPrefab;
+    public GameObject heartBulletPrefab;
+    public float bulletBaseSpeed;
+
     // 发射子弹
     void fire () {
         lastAttackTime = Time.time;
         // TODO : Instantiate the bullet
+        GameObject bullet = null;
+        if (isHeart) {
+            bullet = Instantiate (heartBulletPrefab);
+        } else {
+            bullet = Instantiate (triBulletPrefab);
+        }
+        var bulletComp = bullet.GetComponent<Bullet>();
+        var deg = transform.rotation.z;
+        var dir = new Vector2 (Mathf.Cos(deg * Mathf.Deg2Rad), Mathf.Sin(deg * Mathf.Deg2Rad));
+        bulletComp.Init (transform.position, transform.eulerAngles, "enemyBullet", dir * bulletBaseSpeed);
     }
 
     void OnTriggerEnter2D (Collider2D other) {
@@ -71,7 +85,7 @@ public class Enemy_Range : MonoBehaviour {
         if (otherTag == "Player" || otherTag == "playerBullet") {
             isDead = true;
             // TODO : Destroy the enemy
-            Destroy (this);
+            Destroy (this.gameObject);
         }
     }
 
