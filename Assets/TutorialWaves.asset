@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2f012eb40cc8645a1b45947e9eb0e3, type: 3}
   m_Name: TutorialWaves
   m_EditorClassIdentifier: 
-  positions: []
+  positions:
+  - {x: -6.34, y: 4.4, z: 0}
+  - {x: 0, y: 4.4, z: 0}
+  - {x: 6.34, y: 4.4, z: 0}
+  - {x: -6.34, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 6.34, y: 0, z: 0}
+  - {x: -6.34, y: -4.4, z: 0}
+  - {x: 0, y: -4.4, z: 0}
+  - {x: 6.34, y: -4.4, z: 0}
   waves:
   - time: 3
     waveEles:
