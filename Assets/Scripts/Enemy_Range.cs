@@ -36,8 +36,10 @@ public class Enemy_Range : Enemy {
             this.GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
             fire ();
             delay (() => {
+                if (isDead) return;
                 fire ();
                 delay (() => {
+                    if (isDead) return;
                     fire ();
                     delay (() => {
                         this.GetComponent<Collider2D> ().isTrigger = false;
@@ -85,8 +87,8 @@ public class Enemy_Range : Enemy {
         }
     }
 
-    void OnTriggerEnter2D (Collision2D other) {
-        string otherTag = other.collider.tag;
+    void OnTriggerEnter2D (Collider2D other) {
+        string otherTag = other.tag;
         if (otherTag == "Character" || otherTag == "CharacterBullet") {
             death ();
         }
