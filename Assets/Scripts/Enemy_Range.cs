@@ -56,6 +56,11 @@ public class Enemy_Range : Enemy {
 
     // 发射子弹
     void fire () {
+        if (enemyType == Shape.COIN) {
+            AudioInterface.Instance.playSE (AudioInterface.Instance.MonsterShoot);
+        } else {
+            AudioInterface.Instance.playSE (AudioInterface.Instance.BatShoot);
+        }
         lastAttackTime = Time.time;
         var originalPosition = transform.position;
         var targetPosition = character.transform.position;

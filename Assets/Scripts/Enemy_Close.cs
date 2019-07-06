@@ -31,6 +31,9 @@ public class Enemy_Close : Enemy {
     void OnCollisionEnter2D (Collision2D other) {
         string otherTag = other.collider.tag;
         if (otherTag == "Character" || otherTag == "CharacterBullet") {
+            if (otherTag == "Character") {
+                AudioInterface.Instance.playSE (AudioInterface.Instance.MonsterHit);
+            }
             death ();
         }
     }

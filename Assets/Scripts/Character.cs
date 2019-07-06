@@ -95,10 +95,12 @@ public class Character : MonoBehaviour {
         bool fired = false;
         var bulletPool = GameSceneController.instance.bulletPool;
         if (Input.GetButton ("Fire1") && (curTime - lastFireTime) > bulletCooldown) {
+            AudioInterface.Instance.playSE (AudioInterface.Instance.ShootLeft);
             fired = true;
             lastFireTime = curTime;
             bullet = bulletPool.Get (Shape.HEART, true);
         } else if (Input.GetButton ("Fire2") && (curTime - lastFireTime) > bulletCooldown) {
+            AudioInterface.Instance.playSE (AudioInterface.Instance.ShootRight);
             fired = true;
             lastFireTime = curTime;
             bullet = bulletPool.Get (Shape.COIN, true);
@@ -114,10 +116,10 @@ public class Character : MonoBehaviour {
         if (isDead) return;
         var other = collision.collider;
         // Debug.Log(other.tag);
-        OnCollide(other);
+        OnCollide (other);
     }
 
-    public void OnCollide(Collider2D other) {
+    public void OnCollide (Collider2D other) {
         if (other.tag == "Enemy" || other.tag == "EnemyBullet") {
             // 判断是否能吸收
             bool absorbable = false;
@@ -151,7 +153,7 @@ public class Character : MonoBehaviour {
         if (isDead) return;
         hp -= damage;
         // TODO: 受击音效/动画
-
+        AudioInterface.Instance.playSE (AudioInterface.Instance.PlayerHurt);
         if (hp <= 0) {
             isDead = true;
             Death ();
@@ -160,7 +162,6 @@ public class Character : MonoBehaviour {
 
     void Death () {
         // TODO: 动画/音效
-        // gamescene.instance.shakecamera
         string animClip = "";
         switch (currentShape) {
             case Shape.COIN:
@@ -187,8 +188,8 @@ public class Character : MonoBehaviour {
         animator.Play (s);
         delay (() => {
             GameSceneController.instance.shakeCamera.screenShake (0.6f, 0.2f);
+            AudioInterface.Instance.playSE (AudioInterface.Instance.DeathSE);
             delay (() => {
-
                 gameObject.SetActive (false);
             }, 1.5f);
         }, 0.6f);
@@ -219,6 +220,7 @@ public class Character : MonoBehaviour {
             }
             currentShape = targetShape;
             // TODO: 变形动画/音效
+            AudioInterface.Instance.playSE (AudioInterface.Instance.PlayerTransform);
             if (originTri) {
                 animator.Play ("TransT2H", 0, 0f);
             } else {
