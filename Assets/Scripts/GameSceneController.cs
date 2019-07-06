@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class GameSceneController : MonoBehaviour {
+    public ShakeCamera shakeCamera;
     public Character mainCharacter;
     public EnemyPool enemyPool;
     public BulletPool bulletPool;

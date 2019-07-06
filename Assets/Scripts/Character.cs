@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,14 @@ public class Character : MonoBehaviour {
         get { return baseSpeed; }
     }
 
+    private bool isDead;
     public int maxHp = 9;
     public int hp = 9;
     public float cdAcc = 0.5f;
     public float cdTime = 0f;
     public Shape currentShape {
-        get; set;
+        get;
+        set;
     } = Shape.TRIANGLE;
 
     private Rigidbody2D rb;
@@ -24,28 +27,29 @@ public class Character : MonoBehaviour {
 
     void Awake () {
         rb = GetComponent<Rigidbody2D> ();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator> ();
     }
 
     // Start is called before the first frame update
     void Start () {
-
+        isDead = false;
     }
 
-    void Update() {
+    void Update () {
         if (cdTime > 0) {
             cdTime -= Time.deltaTime;
         }
-        Trans();
+        Trans ();
     }
 
     void FixedUpdate () {
         FaceToMouse ();
         Move ();
-        Fire();
+        Fire ();
     }
 
     void FaceToMouse () {
+        if (isDead) return;
         // 转向鼠标所在方向
         var v3 = Input.mousePosition;
         v3.z = 10f;
@@ -57,6 +61,7 @@ public class Character : MonoBehaviour {
     }
 
     void Move () {
+        if (isDead) return;
         // 移动
         float horizontal = 0f, vertical = 0f;
         if (Input.GetKey (KeyCode.W)) {
@@ -83,40 +88,42 @@ public class Character : MonoBehaviour {
     public float bulletCooldown = 0.333f;
     private float lastFireTime;
     void Fire () {
+        if (isDead) return;
         // TODO: 对象池
         var curTime = Time.time;
         GameObject bullet = null;
         bool fired = false;
         var bulletPool = GameSceneController.instance.bulletPool;
-        if (Input.GetButton("Fire1") && (curTime - lastFireTime) > bulletCooldown) {
+        if (Input.GetButton ("Fire1") && (curTime - lastFireTime) > bulletCooldown) {
             fired = true;
             lastFireTime = curTime;
-            bullet = bulletPool.Get(Shape.HEART, true);
-        } else if (Input.GetButton("Fire2") && (curTime - lastFireTime) > bulletCooldown) {
+            bullet = bulletPool.Get (Shape.HEART, true);
+        } else if (Input.GetButton ("Fire2") && (curTime - lastFireTime) > bulletCooldown) {
             fired = true;
             lastFireTime = curTime;
-            bullet = bulletPool.Get(Shape.COIN, true);
+            bullet = bulletPool.Get (Shape.COIN, true);
         }
 
         if (fired) {
-            var bulletComp = bullet.GetComponent<Bullet>();
-            bulletComp.Init(transform.position, transform.eulerAngles, "CharacterBullet", mouseDirVec.normalized * bulletBaseSpeed);
+            var bulletComp = bullet.GetComponent<Bullet> ();
+            bulletComp.Init (transform.position, transform.eulerAngles, "CharacterBullet", mouseDirVec.normalized * bulletBaseSpeed);
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D (Collision2D collision) {
+        if (isDead) return;
         var other = collision.collider;
         // Debug.Log(other.tag);
         if (other.tag == "Enemy" || other.tag == "EnemyBullet") {
             // TODO: 判断是否能吸收
             bool absorbable = false;
             if (other.tag == "Enemy") {
-                var enemy = other.GetComponent<Enemy>();
+                var enemy = other.GetComponent<Enemy> ();
                 if (enemy.enemyType == currentShape) {
                     absorbable = true;
                 }
             } else if (other.tag == "EnemyBullet") {
-                var enemyBullet = other.GetComponent<Bullet>();
+                var enemyBullet = other.GetComponent<Bullet> ();
                 if (enemyBullet.shape == currentShape) {
                     absorbable = true;
                 }
@@ -124,7 +131,7 @@ public class Character : MonoBehaviour {
 
             if (!absorbable) {
                 // 1 点伤害
-                BeDamaged(1);
+                BeDamaged (1);
             } else {
                 // 吸收
                 // TODO: 加 CD，特殊处理 三角形
@@ -133,22 +140,66 @@ public class Character : MonoBehaviour {
         }
     }
 
-    public void BeDamaged(int damage) {
+    public void BeDamaged (int damage) {
+        if (isDead) return;
         --hp;
         // TODO: 受击音效/动画
 
         if (hp <= 0) {
-            Death();
+            isDead = true;
+            Death ();
         }
     }
 
-    void Death() {
+    void Death () {
         // TODO: 动画/音效
-        gameObject.SetActive(false);
+        // gamescene.instance.shakecamera
+        string animClip = "";
+        switch (currentShape) {
+            case Shape.COIN:
+                animClip = "C2Dead";
+                break;
+            case Shape.HEART:
+                animClip = "H2Dead";
+                break;
+            case Shape.TRIANGLE:
+                animClip = "T2Dead";
+                break;
+            default:
+                break;
+        }
+        playDeath (animClip);
+
     }
 
-    void Trans() {
-        if (Input.GetKeyDown(KeyCode.Space) && cdTime <= 0f) {
+    // 播放死亡动画
+    private void playDeath (string s) {
+        gameObject.GetComponent<BoxCollider2D> ().isTrigger = true;
+        gameObject.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+        gameObject.GetComponent<Rigidbody2D> ().angularVelocity = 0;
+        animator.Play (s);
+        delay (() => {
+            GameSceneController.instance.shakeCamera.screenShake (0.6f, 0.2f);
+            delay (() => {
+              
+                gameObject.SetActive (false);
+            }, 1.5f);
+        }, 0.6f);
+    }
+
+    // 延迟
+    public void delay (Action act, float duration) {
+        StartCoroutine (_delay (act, duration));
+    }
+
+    IEnumerator _delay (Action act, float duration) {
+        yield return new WaitForSeconds (duration);
+        act ();
+    }
+
+    void Trans () {
+        if (isDead) return;
+        if (Input.GetKeyDown (KeyCode.Space) && cdTime <= 0f) {
             Shape targetShape = Shape.COIN;
             bool originTri = false;
             if (currentShape == Shape.TRIANGLE) {
@@ -162,13 +213,13 @@ public class Character : MonoBehaviour {
             currentShape = targetShape;
             // TODO: 变形动画/音效
             if (originTri) {
-                animator.Play("TransT2H", 0, 0f);
+                animator.Play ("TransT2H", 0, 0f);
             } else {
                 if (currentShape == Shape.COIN) {
-                    animator.Play("TransH2C", 0, 0f);
+                    animator.Play ("TransH2C", 0, 0f);
                     // GetComponent<SpriteRenderer>().color = Color.yellow;
                 } else {
-                    animator.Play("TransC2H", 0, 0f);
+                    animator.Play ("TransC2H", 0, 0f);
                     // GetComponent<SpriteRenderer>().color = Color.red;
                 }
             }
