@@ -114,8 +114,12 @@ public class Character : MonoBehaviour {
         if (isDead) return;
         var other = collision.collider;
         // Debug.Log(other.tag);
+        OnCollide(other);
+    }
+
+    public void OnCollide(Collider2D other) {
         if (other.tag == "Enemy" || other.tag == "EnemyBullet") {
-            // TODO: 判断是否能吸收
+            // 判断是否能吸收
             bool absorbable = false;
             if (other.tag == "Enemy") {
                 var enemy = other.GetComponent<Enemy> ();
@@ -135,7 +139,10 @@ public class Character : MonoBehaviour {
             } else {
                 // 吸收
                 // TODO: 加 CD，特殊处理 三角形
-                cdTime += cdAcc;
+                if (other.tag == "Enemy") {
+                    // 吸收子弹的时候不加CD
+                    cdTime += cdAcc;
+                }
             }
         }
     }
@@ -181,7 +188,7 @@ public class Character : MonoBehaviour {
         delay (() => {
             GameSceneController.instance.shakeCamera.screenShake (0.6f, 0.2f);
             delay (() => {
-              
+
                 gameObject.SetActive (false);
             }, 1.5f);
         }, 0.6f);

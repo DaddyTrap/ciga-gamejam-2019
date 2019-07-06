@@ -39,16 +39,19 @@ public abstract class Enemy : MonoBehaviour {
     protected void death () {
         anim.Play ("Dead", 0, 0.0f);
         isDead = true;
+        this.GetComponent<Collider2D>().enabled = false;
         // Destroy the enemy
         delay (() => {
             gameObject.SetActive (false);
         }, 0.433f);
     }
     // 设置类型
-    public void setEnemyType (Shape _enemyType, Sprite _enemySprite, RuntimeAnimatorController _anim) {
+    public void Init (Shape _enemyType, Sprite _enemySprite, RuntimeAnimatorController _anim) {
         var enemySprite = this.GetComponent<SpriteRenderer> ().sprite = _enemySprite;
         enemyType = _enemyType;
         anim.runtimeAnimatorController = _anim;
+        isDead = false;
+        this.GetComponent<Collider2D>().enabled = true;
     }
 
     // 延迟

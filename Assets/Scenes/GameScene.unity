@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 246572574}
   m_Layer: 8
   m_Name: Bound
-  m_TagString: Untagged
+  m_TagString: Bound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -532,8 +532,8 @@ MonoBehaviour:
   - {fileID: 22100000, guid: cc215f1bc26b4ba4c95bce66868895ab, type: 2}
   - {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
   closeAnims:
-  - {fileID: 22100000, guid: cc215f1bc26b4ba4c95bce66868895ab, type: 2}
-  - {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
+  - {fileID: 22100000, guid: 51c7d150787ad5644a612c83a46d9f66, type: 2}
+  - {fileID: 22100000, guid: 605ab9e762947b442abf0c5d14987c26, type: 2}
   triangleAnims: {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
   enemySprite:
   - {fileID: -8879575351698920438, guid: 1c6ac7f97821ce54c9a32c9a37ce3354, type: 3}
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf0bdba821d4bd4cac0d7622c4b0a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 10
+  baseSpeed: 6
   maxHp: 9
   hp: 9
   cdAcc: 0.5

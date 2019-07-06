@@ -43,6 +43,7 @@ public class EnemyPool : MonoBehaviour {
         for (int i = 0; i < trianglePool.Count; ++i) {
             if (!trianglePool[i].activeSelf) {
                 trianglePool[i].SetActive (true);
+                trianglePool[i].GetComponent<Triangle> ().Init (Shape.TRIANGLE, enemySprite[2], triangleAnims);
                 return trianglePool[i];
             }
         }
@@ -50,7 +51,7 @@ public class EnemyPool : MonoBehaviour {
         // 能执行到这里，即当前实例都在使用，需要创建实例
         var gobj = Instantiate (trianglePrefab, transform) as GameObject;
         trianglePool.Add (gobj);
-        gobj.GetComponent<Triangle> ().setEnemyType (Shape.TRIANGLE, enemySprite[2], triangleAnims);
+        gobj.GetComponent<Triangle> ().Init (Shape.TRIANGLE, enemySprite[2], triangleAnims);
         return gobj;
     }
     private GameObject getOneRange (Shape enemyType) {
@@ -58,6 +59,7 @@ public class EnemyPool : MonoBehaviour {
         for (int i = 0; i < rangePool.Count; ++i) {
             if (!rangePool[i].activeSelf) {
                 rangePool[i].SetActive (true);
+                rangePool[i].GetComponent<Enemy_Range> ().Init (enemyType, enemySprite[(int) enemyType], rangeAnims[(int) enemyType]);
                 return rangePool[i];
             }
         }
@@ -65,7 +67,7 @@ public class EnemyPool : MonoBehaviour {
         // 能执行到这里，即当前实例都在使用，需要创建实例
         var gobj = Instantiate (rangePrefab, transform) as GameObject;
         rangePool.Add (gobj);
-        gobj.GetComponent<Enemy_Range> ().setEnemyType (enemyType, enemySprite[(int) enemyType], rangeAnims[(int) enemyType]);
+        gobj.GetComponent<Enemy_Range> ().Init (enemyType, enemySprite[(int) enemyType], rangeAnims[(int) enemyType]);
         return gobj;
     }
     private GameObject getOneClose (Shape enemyType) {
@@ -73,14 +75,15 @@ public class EnemyPool : MonoBehaviour {
         for (int i = 0; i < closePool.Count; ++i) {
             if (!closePool[i].activeSelf) {
                 closePool[i].SetActive (true);
-                return rangePool[i];
+                closePool[i].GetComponent<Enemy_Close>().Init (enemyType, enemySprite[(int) enemyType], closeAnims[(int) enemyType]);
+                return closePool[i];
             }
         }
 
         // 能执行到这里，即当前实例都在使用，需要创建实例
         var gobj = Instantiate (closePrefab, transform) as GameObject;
         closePool.Add (gobj);
-        gobj.GetComponent<Enemy_Close> ().setEnemyType (enemyType, enemySprite[(int) enemyType], closeAnims[(int) enemyType]);
+        gobj.GetComponent<Enemy_Close> ().Init (enemyType, enemySprite[(int) enemyType], closeAnims[(int) enemyType]);
         return gobj;
     }
 }
