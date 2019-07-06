@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour {
-    public bool isHeart; // 标记是否为心型敌人
+    public Shape enemyType;
     protected bool isDead; // 标记敌人是否死亡
     public float followSpeed; // 跟踪速度
     public float followGap; // 跟踪间隔
@@ -34,12 +34,18 @@ public abstract class Enemy : MonoBehaviour {
     }
     // 死亡
     protected void death (Collider2D other) {
-        Debug.Log(other.tag);
+        Debug.Log (other.tag);
         string otherTag = other.tag;
         if (otherTag == "Character" || otherTag == "CharacterBullet") {
             isDead = true;
             // TODO : Destroy the enemy
             Destroy (this.gameObject);
         }
+    }
+    // 设置类型
+    public void setEnemyType (Shape _enemyType, Sprite _enemySprite) {
+        var enemySprite = this.GetComponent<SpriteRenderer> ().sprite;
+        enemySprite = _enemySprite;
+        enemyType = _enemyType;
     }
 }
