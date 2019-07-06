@@ -1,28 +1,43 @@
 fileFormatVersion: 2
-guid: 1c6ac7f97821ce54c9a32c9a37ce3354
+guid: 5f20e5dc31300ae4a9dd82fc3772aadf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8879575351698920438
-    second: spider_attack_0
+      213: 8674694389588144863
+    second: Change01_0
   - first:
-      213: 8900937497783584760
-    second: spider_attack_1
+      213: -7946122621588823624
+    second: Change01_1
   - first:
-      213: 7704689081863149429
-    second: spider_attack_2
+      213: 8267660221704671756
+    second: Change01_2
   - first:
-      213: -8884266473867426218
-    second: spider_attack_3
+      213: -5935118329778009574
+    second: Change01_3
   - first:
-      213: 4769756489949307474
-    second: spider_attack_4
+      213: 255498723543226037
+    second: Change01_4
   - first:
-      213: -6444142326364644529
-    second: spider_attack_5
+      213: 6110847155292307896
+    second: Change01_5
   - first:
-      213: 3142520567979260801
-    second: spider_attack_6
+      213: 2349391216391826808
+    second: Change01_6
+  - first:
+      213: 7484044529594562298
+    second: Change01_7
+  - first:
+      213: 2461797596268887119
+    second: Change01_8
+  - first:
+      213: -8988214846062694629
+    second: Change01_9
+  - first:
+      213: -8592225712826061195
+    second: Change01_10
+  - first:
+      213: -1912505215598581932
+    second: Change01_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -105,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spider_attack_0
+      name: Change01_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2b100c2b9b3b6549b5c286885d514c5
-      internalID: -8879575351698920438
+      spriteID: 70bedb11d75e9304c95d2b448a6e1205
+      internalID: 8674694389588144863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_1
+      name: Change01_1
       rect:
         serializedVersion: 2
         x: 25
@@ -140,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d757fe45047b0be4a8be37e93b154efd
-      internalID: 8900937497783584760
+      spriteID: 61e8c7a63f8b5944b8cb0232f80454aa
+      internalID: -7946122621588823624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_2
+      name: Change01_2
       rect:
         serializedVersion: 2
         x: 50
@@ -161,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3339f54775504b143925927dd06fa126
-      internalID: 7704689081863149429
+      spriteID: 8f07f5a3e67b2e64caf5d6866a246ea1
+      internalID: 8267660221704671756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_3
+      name: Change01_3
       rect:
         serializedVersion: 2
         x: 75
@@ -182,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c94db24c6dedab744af10019b3660570
-      internalID: -8884266473867426218
+      spriteID: a1a979bdbc588144c83fcc3d9df2113c
+      internalID: -5935118329778009574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_4
+      name: Change01_4
       rect:
         serializedVersion: 2
         x: 100
@@ -203,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b67953ed19d6ee84bb58d2bfa6c6202e
-      internalID: 4769756489949307474
+      spriteID: f2881bdce88cf6d40aad9153b6a9d4a7
+      internalID: 255498723543226037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_5
+      name: Change01_5
       rect:
         serializedVersion: 2
         x: 125
@@ -224,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddc52983d7084d44d8d3dbc6cbd92c8e
-      internalID: -6444142326364644529
+      spriteID: f1d29f31506a068449e0df43f2c0636c
+      internalID: 6110847155292307896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_6
+      name: Change01_6
       rect:
         serializedVersion: 2
         x: 150
@@ -245,8 +260,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96947ab9aff78d44b8870069ae2d755a
-      internalID: 3142520567979260801
+      spriteID: c537c318a279b7b46a013fc202bacc77
+      internalID: 2349391216391826808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Change01_7
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6d3643077196548b313e249681c229
+      internalID: 7484044529594562298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Change01_8
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16f772a3a99605a4b9d6e3376af91b28
+      internalID: 2461797596268887119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Change01_9
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a502f2a5a213a8444955ce52a62a886d
+      internalID: -8988214846062694629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Change01_10
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 033bbbf575c310f46b0d765b8c3bf166
+      internalID: -8592225712826061195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Change01_11
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51eb7453e63323a4ba167b5da63337ef
+      internalID: -1912505215598581932
       vertices: []
       indices: 
       edges: []
@@ -254,7 +374,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6d72c643ac328f843bf28fc2ed50aeb6
+    spriteID: ee03a4fa2ebc5db47b232f59cbbad478
     internalID: 0
     vertices: []
     indices: 

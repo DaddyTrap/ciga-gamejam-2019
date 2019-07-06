@@ -18,11 +18,13 @@ public class Character : MonoBehaviour {
     } = Shape.TRIANGLE;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     private Vector2 mouseDirVec;
 
     void Awake () {
         rb = GetComponent<Rigidbody2D> ();
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -148,6 +150,10 @@ public class Character : MonoBehaviour {
     void Trans() {
         if (Input.GetKeyDown(KeyCode.Space) && cdTime <= 0f) {
             Shape targetShape = Shape.COIN;
+            bool originTri = false;
+            if (currentShape == Shape.TRIANGLE) {
+                originTri = true;
+            }
             if (currentShape == Shape.HEART) {
                 targetShape = Shape.COIN;
             } else {
@@ -155,10 +161,16 @@ public class Character : MonoBehaviour {
             }
             currentShape = targetShape;
             // TODO: 变形动画/音效
-            if (currentShape == Shape.COIN) {
-                GetComponent<SpriteRenderer>().color = Color.yellow;
+            if (originTri) {
+                animator.Play("TransT2H", 0, 0f);
             } else {
-                GetComponent<SpriteRenderer>().color = Color.red;
+                if (currentShape == Shape.COIN) {
+                    animator.Play("TransH2C", 0, 0f);
+                    // GetComponent<SpriteRenderer>().color = Color.yellow;
+                } else {
+                    animator.Play("TransC2H", 0, 0f);
+                    // GetComponent<SpriteRenderer>().color = Color.red;
+                }
             }
         }
     }

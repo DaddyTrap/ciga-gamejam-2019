@@ -1,28 +1,43 @@
 fileFormatVersion: 2
-guid: 1c6ac7f97821ce54c9a32c9a37ce3354
+guid: 4c044c65f57f8174889a7fa3348a9688
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8879575351698920438
-    second: spider_attack_0
+      213: 6130097969841704132
+    second: T2H_0
   - first:
-      213: 8900937497783584760
-    second: spider_attack_1
+      213: -6618116676818347434
+    second: T2H_1
   - first:
-      213: 7704689081863149429
-    second: spider_attack_2
+      213: -5949505826811502432
+    second: T2H_2
   - first:
-      213: -8884266473867426218
-    second: spider_attack_3
+      213: 2499821574627825096
+    second: T2H_3
   - first:
-      213: 4769756489949307474
-    second: spider_attack_4
+      213: -6392661556797500146
+    second: T2H_4
   - first:
-      213: -6444142326364644529
-    second: spider_attack_5
+      213: -4501789583563843286
+    second: T2H_5
   - first:
-      213: 3142520567979260801
-    second: spider_attack_6
+      213: -88710193432390729
+    second: T2H_6
+  - first:
+      213: 8463964990892646784
+    second: T2H_7
+  - first:
+      213: 4068603278133475107
+    second: T2H_8
+  - first:
+      213: 5182059746002419762
+    second: T2H_9
+  - first:
+      213: 7834235894056421641
+    second: T2H_10
+  - first:
+      213: -5574150982097574389
+    second: T2H_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -105,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spider_attack_0
+      name: T2H_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2b100c2b9b3b6549b5c286885d514c5
-      internalID: -8879575351698920438
+      spriteID: 8fd45b5427dc22d4f9f38515235120b4
+      internalID: 6130097969841704132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_1
+      name: T2H_1
       rect:
         serializedVersion: 2
         x: 25
@@ -140,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d757fe45047b0be4a8be37e93b154efd
-      internalID: 8900937497783584760
+      spriteID: 2e19a74accb4c4347a5262f1a4a4c5f8
+      internalID: -6618116676818347434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_2
+      name: T2H_2
       rect:
         serializedVersion: 2
         x: 50
@@ -161,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3339f54775504b143925927dd06fa126
-      internalID: 7704689081863149429
+      spriteID: 475d8192d4f3ed043beba9e65820a5b8
+      internalID: -5949505826811502432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_3
+      name: T2H_3
       rect:
         serializedVersion: 2
         x: 75
@@ -182,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c94db24c6dedab744af10019b3660570
-      internalID: -8884266473867426218
+      spriteID: 1f9969c0e0516ea4280ffd21f379acb0
+      internalID: 2499821574627825096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_4
+      name: T2H_4
       rect:
         serializedVersion: 2
         x: 100
@@ -203,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b67953ed19d6ee84bb58d2bfa6c6202e
-      internalID: 4769756489949307474
+      spriteID: babf4bef739097d45a561caeaa38abce
+      internalID: -6392661556797500146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_5
+      name: T2H_5
       rect:
         serializedVersion: 2
         x: 125
@@ -224,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddc52983d7084d44d8d3dbc6cbd92c8e
-      internalID: -6444142326364644529
+      spriteID: 3845012964a05c240a240371479cfbf3
+      internalID: -4501789583563843286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider_attack_6
+      name: T2H_6
       rect:
         serializedVersion: 2
         x: 150
@@ -245,8 +260,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96947ab9aff78d44b8870069ae2d755a
-      internalID: 3142520567979260801
+      spriteID: 768091777930a57458948e14219a5d85
+      internalID: -88710193432390729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T2H_7
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692f4ca24bd8a6a4690afea65f666a91
+      internalID: 8463964990892646784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T2H_8
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f543c8e3d13423f4e87fcb14a780d5ca
+      internalID: 4068603278133475107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T2H_9
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db31ffcccc6b8ce4ba948495af9c2823
+      internalID: 5182059746002419762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T2H_10
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d8cf76f56c5f34481ac98fe2cd437b
+      internalID: 7834235894056421641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T2H_11
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 0
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92bc578e99d5c32449f8f81be7dc1745
+      internalID: -5574150982097574389
       vertices: []
       indices: 
       edges: []
@@ -254,7 +374,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6d72c643ac328f843bf28fc2ed50aeb6
+    spriteID: 2e5bdd195f83b1f42b919250eb9bd6d8
     internalID: 0
     vertices: []
     indices: 

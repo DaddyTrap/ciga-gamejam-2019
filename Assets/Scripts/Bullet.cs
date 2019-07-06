@@ -24,7 +24,10 @@ public class Bullet : MonoBehaviour {
             gameObject.SetActive(false);
         } else if (isFromCharacter && collider.tag == "Enemy") {
             // TOOD: 触碰敌人，播放特效，造成伤害
-            collider.GetComponent<Enemy>().BeDamaged();
+            var enemy = collider.GetComponent<Enemy>();
+            if (enemy.enemyType == shape) {
+                enemy.BeDamaged();
+            }
             gameObject.SetActive(false);
         }
     }
