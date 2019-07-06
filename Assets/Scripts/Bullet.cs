@@ -17,13 +17,14 @@ public class Bullet : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
+        // Debug.Log(collider.tag);
         if (!isFromCharacter && collider.tag == "Character") {
             // TODO: 触碰玩家，播放特效，造成伤害
-
+            collider.GetComponent<Character>().BeDamaged(1);
             gameObject.SetActive(false);
         } else if (isFromCharacter && collider.tag == "Enemy") {
             // TOOD: 触碰敌人，播放特效，造成伤害
-
+            collider.GetComponent<Enemy>().BeDamaged();
             gameObject.SetActive(false);
         }
     }

@@ -34,18 +34,24 @@ public class BulletPool : MonoBehaviour {
         Sprite sp = null;
         if (shape == Shape.COIN && isCharacter) {
             sp = characterCoinBullet;
+            gottenObj.tag = "CharacterBullet";
         } else if (shape == Shape.HEART && isCharacter) {
             sp = characterHeartBullet;
+            gottenObj.tag = "CharacterBullet";
         } else if (shape == Shape.COIN && !isCharacter) {
             sp = enemyCoinBullet;
+            gottenObj.tag = "EnemyBullet";
         } else if (shape == Shape.HEART && !isCharacter) {
             sp = enemyHeartBullet;
+            gottenObj.tag = "EnemyBullet";
         }
         gottenObj.GetComponent<SpriteRenderer>().sprite = sp;
 
         var bullet = gottenObj.GetComponent<Bullet>();
         bullet.shape = shape;
         bullet.isFromCharacter = isCharacter;
+
+        gottenObj.SetActive(true);
 
         return gottenObj;
     }
