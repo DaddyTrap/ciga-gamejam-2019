@@ -35,19 +35,25 @@ public class Enemy_Range : Enemy {
             this.GetComponent<Collider2D> ().isTrigger = true;
             this.GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
             fire ();
-            delay (() => {
+            // delay (() => {
+            //     if (isDead) return;
+            //     fire ();
+            //     delay (() => {
+            //         if (isDead) return;
+            //         fire ();
+            //         delay (() => {
+            //             this.GetComponent<Collider2D> ().isTrigger = false;
+            //             firing = false;
+            //             return;
+            //         }, 0.5f);
+            //     }, 0.7f);
+            // }, 0.7f);
+            delay(()=>{
                 if (isDead) return;
-                fire ();
-                delay (() => {
-                    if (isDead) return;
-                    fire ();
-                    delay (() => {
-                        this.GetComponent<Collider2D> ().isTrigger = false;
-                        firing = false;
-                        return;
-                    }, 0.5f);
-                }, 0.7f);
-            }, 0.7f);
+                this.GetComponent<Collider2D> ().isTrigger = false;
+                firing = false;
+                return;
+            }, 0.5f);
         }
         // 跟踪
         if (needFollow && !firing) followCharacter ();

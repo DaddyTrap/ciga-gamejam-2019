@@ -694,7 +694,7 @@ MonoBehaviour:
   mainCharacter: {fileID: 1481590910}
   enemyPool: {fileID: 1158668392}
   bulletPool: {fileID: 794596613}
-  waveScriptable: {fileID: 11400000, guid: dc1d062b56515d54c967abeaecff44ea, type: 2}
+  waveScriptable: {fileID: 11400000, guid: 186eb6db16aacb04398a86629366066a, type: 2}
 --- !u!1 &1307977302
 GameObject:
   m_ObjectHideFlags: 0
