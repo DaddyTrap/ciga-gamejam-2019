@@ -85,4 +85,11 @@ public class Enemy_Range : Enemy {
         }
     }
 
+    void OnTriggerEnter2D (Collision2D other) {
+        string otherTag = other.collider.tag;
+        if (otherTag == "Character" || otherTag == "CharacterBullet") {
+            death ();
+        }
+    }
+
 }
