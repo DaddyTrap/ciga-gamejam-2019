@@ -150,6 +150,10 @@ public class Character : MonoBehaviour {
     void Trans() {
         if (Input.GetKeyDown(KeyCode.Space) && cdTime <= 0f) {
             Shape targetShape = Shape.COIN;
+            bool originTri = false;
+            if (currentShape == Shape.TRIANGLE) {
+                originTri = true;
+            }
             if (currentShape == Shape.HEART) {
                 targetShape = Shape.COIN;
             } else {
@@ -157,12 +161,16 @@ public class Character : MonoBehaviour {
             }
             currentShape = targetShape;
             // TODO: 变形动画/音效
-            if (currentShape == Shape.COIN) {
-                animator.Play("TransH2C", 0, 0f);
-                // GetComponent<SpriteRenderer>().color = Color.yellow;
+            if (originTri) {
+                animator.Play("TransT2H", 0, 0f);
             } else {
-                animator.Play("TransC2H", 0, 0f);
-                // GetComponent<SpriteRenderer>().color = Color.red;
+                if (currentShape == Shape.COIN) {
+                    animator.Play("TransH2C", 0, 0f);
+                    // GetComponent<SpriteRenderer>().color = Color.yellow;
+                } else {
+                    animator.Play("TransC2H", 0, 0f);
+                    // GetComponent<SpriteRenderer>().color = Color.red;
+                }
             }
         }
     }
