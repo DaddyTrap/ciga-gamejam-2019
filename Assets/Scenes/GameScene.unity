@@ -796,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3c836f66da3234a88e62cd3705f8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeCamera: {fileID: 1266375867}
   mainCharacter: {fileID: 1481590910}
   enemyPool: {fileID: 1158668392}
   bulletPool: {fileID: 794596613}
