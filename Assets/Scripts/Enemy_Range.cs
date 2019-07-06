@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Range : Enemy {
+    bool firing;
     public float attackGap; // 攻击间隔
     private float lastAttackTime; // 上一次攻击时间
     public GameObject bullet; // 子弹
@@ -24,14 +25,31 @@ public class Enemy_Range : Enemy {
 
     // 行为管理器
     protected override void enemyAction () {
+        if (isDead) return;
         var currentTime = Time.time;
         bool needFollow = (currentTime - lastFollowTime >= followGap) ? true : false;
         bool needAttack = (currentTime - lastAttackTime >= attackGap) ? true : false;
-
-        // 跟踪
-        if (needFollow) followCharacter ();
         // 攻击
-        if (needAttack) fire ();
+        if (needAttack) {
+            firing = true;
+            this.GetComponent<Collider2D> ().isTrigger = true;
+            this.GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
+            fire ();
+            delay (() => {
+                fire ();
+                delay (() => {
+                    fire ();
+                    delay (() => {
+                        this.GetComponent<Collider2D> ().isTrigger = false;
+                        firing = false;
+                        return;
+                    }, 0.5f);
+                }, 0.7f);
+            }, 0.7f);
+        }
+        // 跟踪
+        if (needFollow && !firing) followCharacter ();
+
     }
 
     public float bulletBaseSpeed;
@@ -39,16 +57,23 @@ public class Enemy_Range : Enemy {
     // 发射子弹
     void fire () {
         lastAttackTime = Time.time;
+        var originalPosition = transform.position;
+        var targetPosition = character.transform.position;
+        var offset = targetPosition - originalPosition;
+        var direction = offset.normalized;
+        // 面向玩家
+        transform.localEulerAngles = new Vector3 (0, 0, Vector3.SignedAngle (Vector3.up, direction, Vector3.forward));
+        anim.Play ("Attack", 0, 0.0f);
         var bulletPool = GameSceneController.instance.bulletPool;
         // Instantiate the bullet
-        var bulletObj = bulletPool.Get(enemyType, false);
+        var bulletObj = bulletPool.Get (enemyType, false);
         // var deg = transform.rotation.z;
         // var dir = new Vector2 (Mathf.Cos(deg * Mathf.Deg2Rad), Mathf.Sin(deg * Mathf.Deg2Rad));
         var dir = (character.transform.position - transform.position).normalized;
-        bulletObj.GetComponent<Bullet>().Init(transform.position, transform.eulerAngles, "EnemyBullet", dir * bulletBaseSpeed);
+        bulletObj.GetComponent<Bullet> ().Init (transform.position, transform.eulerAngles, "EnemyBullet", dir * bulletBaseSpeed);
     }
 
-    void OnTriggerEnter2D (Collider2D other) {
+    void OnCollisionEnter2D (Collision2D other) {
         death (other);
     }
 

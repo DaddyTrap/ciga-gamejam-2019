@@ -314,6 +314,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ddd86427f7d6e45846a7fac9102592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rangeAnims:
+  - {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
+  - {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
+  closeAnims:
+  - {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
+  - {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
+  triangleAnims: {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
   enemySprite:
   - {fileID: -8879575351698920438, guid: 1c6ac7f97821ce54c9a32c9a37ce3354, type: 3}
   - {fileID: -8879575351698920438, guid: 1c6ac7f97821ce54c9a32c9a37ce3354, type: 3}

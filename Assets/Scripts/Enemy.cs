@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public abstract class Enemy : MonoBehaviour {
     protected float lastFollowTime; // 上一次跟踪时间
     public GameObject character; // 玩家信息
     Rigidbody2D rb; // 敌人刚体
+    public Animator anim; // 敌人动画控制器
     protected void onStart () {
         isDead = false;
     }
@@ -21,6 +23,7 @@ public abstract class Enemy : MonoBehaviour {
     protected abstract void enemyAction ();
     // 跟踪行为
     protected void followCharacter () {
+        anim.Play ("Walk");
         Rigidbody2D rb = transform.GetComponent<Rigidbody2D> ();
         lastFollowTime = Time.time;
         var originalPosition = transform.position;
@@ -33,18 +36,31 @@ public abstract class Enemy : MonoBehaviour {
         rb.velocity = direction * followSpeed;
     }
     // 死亡
-    protected void death (Collider2D other) {
-        Debug.Log (other.tag);
-        string otherTag = other.tag;
+    protected void death (Collision2D other) {
+        string otherTag = other.collider.tag;
         if (otherTag == "Character" || otherTag == "CharacterBullet") {
+            anim.Play ("Dead");
             isDead = true;
             // Destroy the enemy
-            gameObject.SetActive(false);
+            delay (() => {
+                gameObject.SetActive (false);
+            }, 0.433f);
         }
     }
     // 设置类型
-    public void setEnemyType (Shape _enemyType, Sprite _enemySprite) {
+    public void setEnemyType (Shape _enemyType, Sprite _enemySprite, RuntimeAnimatorController _anim) {
         var enemySprite = this.GetComponent<SpriteRenderer> ().sprite = _enemySprite;
         enemyType = _enemyType;
+        anim.runtimeAnimatorController = _anim;
+    }
+
+    // 延迟
+    public void delay (Action act, float duration) {
+        StartCoroutine (_delay (act, duration));
+    }
+
+    IEnumerator _delay (Action act, float duration) {
+        yield return new WaitForSeconds (duration);
+        act ();
     }
 }
