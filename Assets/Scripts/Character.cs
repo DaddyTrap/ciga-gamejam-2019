@@ -121,17 +121,22 @@ public class Character : MonoBehaviour {
             }
 
             if (!absorbable) {
-                --hp;
-                // TODO: 受击音效/动画
-
-                if (hp <= 0) {
-                    Death();
-                }
+                // 1 点伤害
+                BeDamaged(1);
             } else {
                 // 吸收
                 // TODO: 加 CD，特殊处理 三角形
                 cdTime += cdAcc;
             }
+        }
+    }
+
+    public void BeDamaged(int damage) {
+        --hp;
+        // TODO: 受击音效/动画
+
+        if (hp <= 0) {
+            Death();
         }
     }
 

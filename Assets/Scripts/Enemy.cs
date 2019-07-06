@@ -36,16 +36,13 @@ public abstract class Enemy : MonoBehaviour {
         rb.velocity = direction * followSpeed;
     }
     // 死亡
-    protected void death (Collision2D other) {
-        string otherTag = other.collider.tag;
-        if (otherTag == "Character" || otherTag == "CharacterBullet") {
-            anim.Play ("Dead", 0, 0.0f);
-            isDead = true;
-            // Destroy the enemy
-            delay (() => {
-                gameObject.SetActive (false);
-            }, 0.433f);
-        }
+    protected void death () {
+        anim.Play ("Dead", 0, 0.0f);
+        isDead = true;
+        // Destroy the enemy
+        delay (() => {
+            gameObject.SetActive (false);
+        }, 0.433f);
     }
     // 设置类型
     public void setEnemyType (Shape _enemyType, Sprite _enemySprite, RuntimeAnimatorController _anim) {
@@ -62,5 +59,9 @@ public abstract class Enemy : MonoBehaviour {
     IEnumerator _delay (Action act, float duration) {
         yield return new WaitForSeconds (duration);
         act ();
+    }
+
+    public void BeDamaged() {
+        death();
     }
 }

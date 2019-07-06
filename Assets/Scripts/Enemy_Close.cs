@@ -28,7 +28,10 @@ public class Enemy_Close : Enemy {
     }
 
     void OnCollisionEnter2D (Collision2D other) {
-        death (other);
+        string otherTag = other.collider.tag;
+        if (otherTag == "Character" || otherTag == "CharacterBullet") {
+            death ();
+        }
     }
 
 }
