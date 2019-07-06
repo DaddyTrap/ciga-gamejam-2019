@@ -7,13 +7,13 @@ public class TitleSceneControl : MonoBehaviour {
     private bool inTitle, inCredit;
     public GameObject titleMenu, creditObj, backObj;
     public string sceneName;
-    public GameObject audioCtrlPrefab;
+    // public GameObject audioCtrlPrefab;
 
     void Start () {
         inTitle = true;
         inCredit = false;
-        var audioInterface = GameObject.Instantiate (audioCtrlPrefab);
-        GameObject.DontDestroyOnLoad (audioInterface);
+        // var audioInterface = GameObject.Instantiate (audioCtrlPrefab);
+        // GameObject.DontDestroyOnLoad (audioInterface);
         AudioInterface.Instance.playBGM (AudioInterface.Instance.TitleBGM);
     }
 

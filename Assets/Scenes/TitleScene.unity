@@ -534,8 +534,6 @@ MonoBehaviour:
   creditObj: {fileID: 78748747}
   backObj: {fileID: 574657288}
   sceneName: GameScene
-  audioCtrlPrefab: {fileID: 1031510107709543527, guid: 9a4df9ece992c4140ab6b34817a8c4c3,
-    type: 3}
 --- !u!4 &1121592299
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +822,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1627768084}
   - component: {fileID: 1627768083}
-  - component: {fileID: 1627768082}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -832,14 +829,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1627768082
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627768081}
-  m_Enabled: 1
 --- !u!20 &1627768083
 Camera:
   m_ObjectHideFlags: 0
