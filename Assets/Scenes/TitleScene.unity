@@ -534,6 +534,8 @@ MonoBehaviour:
   creditObj: {fileID: 78748747}
   backObj: {fileID: 574657288}
   sceneName: GameScene
+  audioCtrlPrefab: {fileID: 1031510107709543527, guid: 9a4df9ece992c4140ab6b34817a8c4c3,
+    type: 3}
 --- !u!4 &1121592299
 Transform:
   m_ObjectHideFlags: 0
