@@ -38,8 +38,8 @@ public abstract class Enemy : MonoBehaviour {
         string otherTag = other.tag;
         if (otherTag == "Character" || otherTag == "CharacterBullet") {
             isDead = true;
-            // TODO : Destroy the enemy
-            Destroy (this.gameObject);
+            // Destroy the enemy
+            gameObject.SetActive(false);
         }
     }
     // 设置类型

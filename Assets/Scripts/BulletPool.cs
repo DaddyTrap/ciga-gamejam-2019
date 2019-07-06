@@ -16,7 +16,7 @@ public class BulletPool : MonoBehaviour {
         _pool = new List<GameObject>();
     }
 
-    public void Get(Shape shape, bool isCharacter) {
+    public GameObject Get(Shape shape, bool isCharacter) {
         GameObject gottenObj = null;
         for (int i = 0; i < _pool.Count; ++i) {
             var obj = _pool[i];
@@ -46,5 +46,7 @@ public class BulletPool : MonoBehaviour {
         var bullet = gottenObj.GetComponent<Bullet>();
         bullet.shape = shape;
         bullet.isFromCharacter = isCharacter;
+
+        return gottenObj;
     }
 }
