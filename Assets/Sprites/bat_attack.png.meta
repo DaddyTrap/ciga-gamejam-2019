@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 12da0d3fbe0d10248aa0db0bb0724955
+guid: b52d58910143aac4d9537b9048e36700
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3088478243936375337
-    second: spider02_dead_0
+      213: -5068764080106912578
+    second: bat_attack_0
   - first:
-      213: -6344817424286225241
-    second: spider02_dead_1
+      213: -610251300123608255
+    second: bat_attack_1
   - first:
-      213: -2877287366798101236
-    second: spider02_dead_2
+      213: 2294711043467326287
+    second: bat_attack_2
   - first:
-      213: -4713412337604613747
-    second: spider02_dead_3
+      213: 1911957261920238494
+    second: bat_attack_3
   - first:
-      213: 4209687035016911890
-    second: spider02_dead_4
+      213: 5149337618619662239
+    second: bat_attack_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -132,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spider02_dead_0
+      name: bat_attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 25
-        height: 25
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdc61fa189aea6443b6dd418bbca7c6c
-      internalID: 3088478243936375337
+      spriteID: 3ba26133fd188ff49addedc273ce455a
+      internalID: -5068764080106912578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider02_dead_1
+      name: bat_attack_1
       rect:
         serializedVersion: 2
-        x: 25
+        x: 30
         y: 0
-        width: 25
-        height: 25
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caebcb37baa75c048978a9b6ac15e891
-      internalID: -6344817424286225241
+      spriteID: d20374a98780f2f4a864b04f6ac82809
+      internalID: -610251300123608255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider02_dead_2
+      name: bat_attack_2
       rect:
         serializedVersion: 2
-        x: 50
+        x: 60
         y: 0
-        width: 25
-        height: 25
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,20 +188,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41145a2b0ebdd454c9398174b3e11044
-      internalID: -2877287366798101236
+      spriteID: 63d2082e4f86e9946bbfff7fb6aa8915
+      internalID: 2294711043467326287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider02_dead_3
+      name: bat_attack_3
       rect:
         serializedVersion: 2
-        x: 75
+        x: 90
         y: 0
-        width: 25
-        height: 25
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8bfd2a79a8e4f54d951cbb39e4c3ec6
-      internalID: -4713412337604613747
+      spriteID: 9c0f20807efce0d4cb5e3157f86dbbd7
+      internalID: 1911957261920238494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spider02_dead_4
+      name: bat_attack_4
       rect:
         serializedVersion: 2
-        x: 100
+        x: 120
         y: 0
-        width: 25
-        height: 25
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,8 +230,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 946cd42be363e284baa9d5db3b80bc07
-      internalID: 4209687035016911890
+      spriteID: 273f19595f89d2948a2769b58aaa6ac7
+      internalID: 5149337618619662239
       vertices: []
       indices: 
       edges: []
@@ -239,7 +239,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ed87fac5e73737941a97045abe873943
+    spriteID: 06f8f1de7a291a8459e7628caf079003
     internalID: 0
     vertices: []
     indices: 

@@ -23,7 +23,7 @@ public abstract class Enemy : MonoBehaviour {
     protected abstract void enemyAction ();
     // 跟踪行为
     protected void followCharacter () {
-        anim.Play ("Walk");
+        anim.Play ("Walk", 0, 0.0f);
         Rigidbody2D rb = transform.GetComponent<Rigidbody2D> ();
         lastFollowTime = Time.time;
         var originalPosition = transform.position;
@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour {
     protected void death (Collision2D other) {
         string otherTag = other.collider.tag;
         if (otherTag == "Character" || otherTag == "CharacterBullet") {
-            anim.Play ("Dead");
+            anim.Play ("Dead", 0, 0.0f);
             isDead = true;
             // Destroy the enemy
             delay (() => {

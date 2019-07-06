@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   followSpeed: 10
-  followGap: 0.5
+  followGap: 0.617
   character: {fileID: 0}
   anim: {fileID: 4651017382084825242}
 --- !u!50 &7879439053992223238
