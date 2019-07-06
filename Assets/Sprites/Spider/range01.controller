@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Self
+  m_Name: range01
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -90,7 +90,7 @@ AnimatorStateMachine:
     m_Position: {x: 340, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2394775020763600045}
-    m_Position: {x: 340, y: 100, z: 0}
+    m_Position: {x: 340, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4452568715967488402}
     m_Position: {x: 340, y: 300, z: 0}
