@@ -149,7 +149,7 @@ public class Character : MonoBehaviour {
 
     public void BeDamaged (int damage) {
         if (isDead) return;
-        --hp;
+        hp -= damage;
         // TODO: 受击音效/动画
 
         if (hp <= 0) {
