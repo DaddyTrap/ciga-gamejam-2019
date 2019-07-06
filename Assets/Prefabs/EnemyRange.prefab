@@ -100,8 +100,6 @@ MonoBehaviour:
   character: {fileID: 0}
   attackGap: 1
   bullet: {fileID: 0}
-  triBulletPrefab: {fileID: 0}
-  heartBulletPrefab: {fileID: 0}
   bulletBaseSpeed: 15
 --- !u!50 &449856028408180568
 Rigidbody2D:

@@ -9,6 +9,9 @@ public class Character : MonoBehaviour {
         get { return baseSpeed; }
     }
 
+    public int maxHp = 9;
+    public int hp = 9;
+
     private Rigidbody2D rb;
 
     private Vector2 mouseDirVec;
@@ -70,19 +73,38 @@ public class Character : MonoBehaviour {
         var curTime = Time.time;
         GameObject bullet = null;
         bool fired = false;
+        var bulletPool = GameSceneController.instance.bulletPool;
         if (Input.GetButton("Fire1") && (curTime - lastFireTime) > bulletCooldown) {
             fired = true;
             lastFireTime = curTime;
-            bullet = Instantiate(triBulletPrefab);
+            bullet = bulletPool.Get(Shape.HEART, true);
         } else if (Input.GetButton("Fire2") && (curTime - lastFireTime) > bulletCooldown) {
             fired = true;
             lastFireTime = curTime;
-            bullet = Instantiate(heartBulletPrefab);
+            bullet = bulletPool.Get(Shape.COIN, true);
         }
 
         if (fired) {
             var bulletComp = bullet.GetComponent<Bullet>();
             bulletComp.Init(transform.position, transform.eulerAngles, "CharacterBullet", mouseDirVec.normalized * bulletBaseSpeed);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        var other = collision.collider;
+        Debug.Log(other.tag);
+        if (other.tag == "Enemy" || other.tag == "EnemyBullet") {
+            --hp;
+            // TODO: 受击音效/动画
+
+            if (hp <= 0) {
+                Death();
+            }
+        }
+    }
+
+    void Death() {
+        // TODO: 动画
+        gameObject.SetActive(false);
     }
 }
