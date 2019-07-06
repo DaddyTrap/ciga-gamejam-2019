@@ -8,6 +8,7 @@ TagManager:
   - CharacterBullet
   - Character
   - Enemy
+  - Bound
   layers:
   - Default
   - TransparentFX
