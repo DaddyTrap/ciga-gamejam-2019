@@ -12,6 +12,10 @@ public class BulletPool : MonoBehaviour {
 
     private List<GameObject> _pool;
 
+    void Awake() {
+        _pool = new List<GameObject>();
+    }
+
     public void Get(Shape shape, bool isCharacter) {
         GameObject gottenObj = null;
         for (int i = 0; i < _pool.Count; ++i) {
@@ -38,5 +42,9 @@ public class BulletPool : MonoBehaviour {
             sp = enemyHeartBullet;
         }
         gottenObj.GetComponent<SpriteRenderer>().sprite = sp;
+
+        var bullet = gottenObj.GetComponent<Bullet>();
+        bullet.shape = shape;
+        bullet.isFromCharacter = isCharacter;
     }
 }

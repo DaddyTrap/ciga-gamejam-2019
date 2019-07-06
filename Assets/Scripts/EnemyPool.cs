@@ -11,6 +11,13 @@ public class EnemyPool : MonoBehaviour {
     List<GameObject> trianglePool;
     List<GameObject> closePool;
     List<GameObject> rangePool;
+
+    void Awake() {
+        closePool = new List<GameObject>();
+        trianglePool = new List<GameObject>();
+        rangePool = new List<GameObject>();
+    }
+
     public GameObject getOneInstance (Shape enemyType, bool isRange) {
         Shape s = enemyType;
         switch (s) {

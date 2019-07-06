@@ -44,8 +44,7 @@ public abstract class Enemy : MonoBehaviour {
     }
     // 设置类型
     public void setEnemyType (Shape _enemyType, Sprite _enemySprite) {
-        var enemySprite = this.GetComponent<SpriteRenderer> ().sprite;
-        enemySprite = _enemySprite;
+        var enemySprite = this.GetComponent<SpriteRenderer> ().sprite = _enemySprite;
         enemyType = _enemyType;
     }
 }
