@@ -32,6 +32,7 @@ public class TitleSceneControl : MonoBehaviour {
     }
 
     public void clickStart () {
+        AudioInterface.Instance.audioSource.Stop ();
         SceneManager.LoadScene ("GameScene");
     }
 
