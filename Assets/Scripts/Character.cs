@@ -11,6 +11,11 @@ public class Character : MonoBehaviour {
 
     public int maxHp = 9;
     public int hp = 9;
+    public float cdAcc = 0.5f;
+    public float cdTime = 0f;
+    public Shape currentShape {
+        get; set;
+    } = Shape.TRIANGLE;
 
     private Rigidbody2D rb;
 
@@ -23,6 +28,13 @@ public class Character : MonoBehaviour {
     // Start is called before the first frame update
     void Start () {
 
+    }
+
+    void Update() {
+        if (cdTime > 0) {
+            cdTime -= Time.deltaTime;
+        }
+        Trans();
     }
 
     void FixedUpdate () {
@@ -92,19 +104,57 @@ public class Character : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         var other = collision.collider;
-        Debug.Log(other.tag);
+        // Debug.Log(other.tag);
         if (other.tag == "Enemy" || other.tag == "EnemyBullet") {
-            --hp;
-            // TODO: 受击音效/动画
+            // TODO: 判断是否能吸收
+            bool absorbable = false;
+            if (other.tag == "Enemy") {
+                var enemy = other.GetComponent<Enemy>();
+                if (enemy.enemyType == currentShape) {
+                    absorbable = true;
+                }
+            } else if (other.tag == "EnemyBullet") {
+                var enemyBullet = other.GetComponent<Bullet>();
+                if (enemyBullet.shape == currentShape) {
+                    absorbable = true;
+                }
+            }
 
-            if (hp <= 0) {
-                Death();
+            if (!absorbable) {
+                --hp;
+                // TODO: 受击音效/动画
+
+                if (hp <= 0) {
+                    Death();
+                }
+            } else {
+                // 吸收
+                // TODO: 加 CD，特殊处理 三角形
+                cdTime += cdAcc;
             }
         }
     }
 
     void Death() {
-        // TODO: 动画
+        // TODO: 动画/音效
         gameObject.SetActive(false);
+    }
+
+    void Trans() {
+        if (Input.GetKeyDown(KeyCode.Space) && cdTime <= 0f) {
+            Shape targetShape = Shape.COIN;
+            if (currentShape == Shape.HEART) {
+                targetShape = Shape.COIN;
+            } else {
+                targetShape = Shape.HEART;
+            }
+            currentShape = targetShape;
+            // TODO: 变形动画/音效
+            if (currentShape == Shape.COIN) {
+                GetComponent<SpriteRenderer>().color = Color.yellow;
+            } else {
+                GetComponent<SpriteRenderer>().color = Color.red;
+            }
+        }
     }
 }

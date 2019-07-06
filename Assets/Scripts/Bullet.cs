@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
+        // Debug.Log(collider.tag);
         if (!isFromCharacter && collider.tag == "Character") {
             // TODO: 触碰玩家，播放特效，造成伤害
 
