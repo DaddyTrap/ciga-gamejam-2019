@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
     public float baseSpeed = 5.0f;
@@ -23,11 +24,28 @@ public class Character : MonoBehaviour {
         }
     }
     public float cdAcc = 0.5f;
-    public float cdTime = 0f;
+    private float _cdTime = 0f;
+    public float cdTime {
+        get {
+            return _cdTime;
+        }
+
+        set {
+            _cdTime = value;
+            cdBar.value = _cdTime;
+            cdText.text = _cdTime.ToString("F2");
+        }
+    }
     public Shape currentShape {
         get;
         set;
     } = Shape.TRIANGLE;
+
+    public Slider cdBar;
+    public Image cdBarFillColor;
+    public Color cdBarCoin;
+    public Color cdBarHeart;
+    public Text cdText;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -47,6 +65,9 @@ public class Character : MonoBehaviour {
     void Update () {
         if (cdTime > 0) {
             cdTime -= Time.deltaTime;
+            if (cdTime < 0) {
+                cdTime = 0f;
+            }
         }
         Trans ();
     }
@@ -91,8 +112,6 @@ public class Character : MonoBehaviour {
         rb.velocity = velocity;
     }
 
-    public GameObject triBulletPrefab;
-    public GameObject heartBulletPrefab;
     public float bulletBaseSpeed = 10f;
     public float bulletCooldown = 0.333f;
     private float lastFireTime;
@@ -229,6 +248,11 @@ public class Character : MonoBehaviour {
                 targetShape = Shape.HEART;
             }
             currentShape = targetShape;
+            if (targetShape == Shape.COIN) {
+                cdBarFillColor.color = cdBarCoin;
+            } else if (targetShape == Shape.HEART) {
+                cdBarFillColor.color = cdBarHeart;
+            }
             // TODO: 变形动画/音效
             AudioInterface.Instance.playSE (AudioInterface.Instance.PlayerTransform);
             if (originTri) {
