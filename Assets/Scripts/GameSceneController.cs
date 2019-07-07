@@ -19,6 +19,9 @@ public class GameSceneController : MonoBehaviour {
 
     public Animator countdownAnimator;
 
+    public WaveScriptable tutorialWaveScriptable;
+    public WaveScriptable stage1WaveScriptable;
+
     [Header("Debug")]
     public WaveScriptable[] waveScriptables;
     public Text waveHint;
@@ -36,9 +39,25 @@ public class GameSceneController : MonoBehaviour {
         gameRunning = false;
     }
 
-    void Start() {
-        // TODO: 判断使用哪一个关卡
+    public Image fadeInImage;
 
+    void Start() {
+        // 判断使用哪一个关卡
+        if (GameManager.Instance.shouldGotoTutorial) {
+            waveScriptable = tutorialWaveScriptable;
+        } else {
+            waveScriptable = stage1WaveScriptable;
+        }
+
+        // 渐入
+        fadeInImage.transform.parent.gameObject.SetActive(true);
+        Delay(()=>{
+            RealStart();
+            fadeInImage.transform.parent.gameObject.SetActive(false);
+        }, 1f);
+    }
+
+    void RealStart() {
         // 倒计时
         countdownAnimator.gameObject.SetActive(true);
         countdownAnimator.Play("Countdown", 0, 0f);
@@ -56,11 +75,11 @@ public class GameSceneController : MonoBehaviour {
             // 检测是否该生成下一波怪
             CheckSpawn();
         }
-        if (Input.GetKeyDown(KeyCode.F) && !gameRunning) {
-            gameRunning = true;
-            gameStartTime = Time.time;
-            StartGame();
-        }
+        // if (Input.GetKeyDown(KeyCode.F) && !gameRunning) {
+        //     gameRunning = true;
+        //     gameStartTime = Time.time;
+        //     StartGame();
+        // }
 
         // For debug
         if (Input.GetKeyDown("1")) {
@@ -109,13 +128,18 @@ public class GameSceneController : MonoBehaviour {
     }
 
     public void StartGame() {
-        // TODO: Game Init
+        // Game Init
         Debug.Log("GAME START!");
         InitGame();
         gameRunning = true;
+        gameStartTime = Time.time;
 
-        // TODO: 根据关卡选择BGM
-        AudioInterface.Instance.playBGM(AudioInterface.Instance.Stage1BGM);
+        // 根据关卡选择BGM
+        if (GameManager.Instance.shouldGotoTutorial) {
+            AudioInterface.Instance.playBGM(AudioInterface.Instance.Stage0BGM);
+        } else {
+            AudioInterface.Instance.playBGM(AudioInterface.Instance.Stage1BGM);
+        }
     }
 
     private Image[] sanityItems;
