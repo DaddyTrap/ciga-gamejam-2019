@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameSceneController : MonoBehaviour {
+    private int enemyDeathCount;
     public ShakeCamera shakeCamera;
     public Character mainCharacter;
     public EnemyPool enemyPool;
@@ -107,6 +108,8 @@ public class GameSceneController : MonoBehaviour {
             sanityItems[i] = Instantiate<GameObject>(sanityItemPrefab, sanityParent).GetComponent<Image>();
         }
         ChangeSanity(mainCharacter.sanity);
+        // 初始化敌人死亡计数
+        enemyDeathCount = 0;
     }
 
     public void ChangeSanity(int sanity) {
@@ -116,5 +119,13 @@ public class GameSceneController : MonoBehaviour {
         for (int i = sanity; i < 9; ++i) {
             sanityItems[i].sprite = sanityEmpty;
         }
+    }
+    public void OnEnemyDeath(Enemy enemy) {
+        ++ enemyDeathCount;
+        // TODO : 
+    }
+
+    public void OnPlayerDeath(Character character) {
+
     }
 }

@@ -39,6 +39,7 @@ public abstract class Enemy : MonoBehaviour {
     protected void death () {
         anim.Play ("Dead", 0, 0.0f);
         AudioInterface.Instance.playSE (AudioInterface.Instance.MonsterHurt);
+        GameSceneController.instance.OnEnemyDeath (this);
         isDead = true;
         this.GetComponent<Collider2D>().enabled = false;
         // Destroy the enemy

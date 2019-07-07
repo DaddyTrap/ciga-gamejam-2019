@@ -219,6 +219,7 @@ public class Character : MonoBehaviour {
             GameSceneController.instance.shakeCamera.screenShake (0.6f, 0.2f);
             AudioInterface.Instance.playSE (AudioInterface.Instance.DeathSE);
             delay (() => {
+                GameSceneController.instance.OnPlayerDeath (this);
                 gameObject.SetActive (false);
             }, 1.5f);
         }, 0.6f);
