@@ -39,6 +39,7 @@ public class GameSceneController : MonoBehaviour {
             elapsedTime = Time.time - gameStartTime;
             // 检测是否该生成下一波怪
             CheckSpawn();
+            CheckSpawnTriangle();
         }
         if (Input.GetKeyDown(KeyCode.F) && !gameRunning) {
             gameRunning = true;
@@ -62,6 +63,9 @@ public class GameSceneController : MonoBehaviour {
         waveHint.text = waveScriptable.name;
     }
 
+    void CheckSpawnTriangle () {
+        
+    }
     void CheckSpawn() {
         if (currentWaveIndex + 1 >= waveScriptable.waves.Length) {
             // 游戏结束
@@ -126,6 +130,10 @@ public class GameSceneController : MonoBehaviour {
     }
 
     public void OnPlayerDeath(Character character) {
+
+    }
+
+    public void goodEnd () {
 
     }
 }
