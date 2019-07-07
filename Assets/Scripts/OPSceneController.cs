@@ -18,7 +18,11 @@ public class OPSceneController : MonoBehaviour {
 
     void Start () {
         isContinue = true;
-        AudioInterface.Instance.playBGM (AudioInterface.Instance.CutSceneComicBGM);
+        if (SceneManager.GetActiveScene ().name == "GoodEnd") {
+            AudioInterface.Instance.playBGM (AudioInterface.Instance.GoodEndBGM);
+        } else {
+            AudioInterface.Instance.playBGM (AudioInterface.Instance.CutSceneComicBGM);
+        }
         showCut (0);
     }
     void Update () {
@@ -42,8 +46,13 @@ public class OPSceneController : MonoBehaviour {
     private void showCut (int index) {
         if (index >= cuts.Length || !isContinue) {
             AudioInterface.Instance.audioSource.Stop ();
-            SceneManager.LoadScene ("GameScene");
-            return ;
+            if (SceneManager.GetActiveScene ().name == "GoodEnd") {
+                SceneManager.LoadScene ("TitleScene");
+                return;
+            } else {
+                SceneManager.LoadScene ("GameScene");
+                return;
+            }
         }
         // fade in
         isFadingIn = true;
