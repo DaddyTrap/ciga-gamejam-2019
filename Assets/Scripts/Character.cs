@@ -11,8 +11,17 @@ public class Character : MonoBehaviour {
     }
 
     private bool isDead;
-    public int maxHp = 9;
-    public int hp = 9;
+    public int maxSanity = 9;
+    private int _sanity = 9;
+    public int sanity {
+        get {
+            return _sanity;
+        }
+        set {
+            _sanity = value;
+            GameSceneController.instance.ChangeSanity(_sanity);
+        }
+    }
     public float cdAcc = 0.5f;
     public float cdTime = 0f;
     public Shape currentShape {
@@ -151,10 +160,11 @@ public class Character : MonoBehaviour {
 
     public void BeDamaged (int damage) {
         if (isDead) return;
-        hp -= damage;
+        sanity -= damage;
         // TODO: 受击音效/动画
         AudioInterface.Instance.playSE (AudioInterface.Instance.PlayerHurt);
-        if (hp <= 0) {
+        GameSceneController.instance.shakeCamera.screenShake(0.2f, 0.2f);
+        if (sanity <= 0) {
             isDead = true;
             Death ();
         }

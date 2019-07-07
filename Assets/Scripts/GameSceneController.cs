@@ -10,6 +10,10 @@ public class GameSceneController : MonoBehaviour {
 
     public WaveScriptable waveScriptable;
 
+    public GameObject sanityItemPrefab;
+    public Sprite sanityFull, sanityEmpty;
+    public Transform sanityParent;
+
     [Header("Debug")]
     public WaveScriptable[] waveScriptables;
     public Text waveHint;
@@ -90,6 +94,27 @@ public class GameSceneController : MonoBehaviour {
     public void StartGame() {
         // TODO: Game Init
         Debug.Log("GAME START!");
+        InitGame();
         gameRunning = true;
+    }
+
+    private Image[] sanityItems;
+
+    public void InitGame() {
+        // 初始化 San 值
+        sanityItems = new Image[9];
+        for (int i = 0; i < 9; ++i) {
+            sanityItems[i] = Instantiate<GameObject>(sanityItemPrefab, sanityParent).GetComponent<Image>();
+        }
+        ChangeSanity(mainCharacter.sanity);
+    }
+
+    public void ChangeSanity(int sanity) {
+        for (int i = 0; i < sanity; ++i) {
+            sanityItems[i].sprite = sanityFull;
+        }
+        for (int i = sanity; i < 9; ++i) {
+            sanityItems[i].sprite = sanityEmpty;
+        }
     }
 }
