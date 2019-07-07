@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour {
     private int enemyDeathCount;
@@ -11,7 +12,7 @@ public class GameSceneController : MonoBehaviour {
     public EnemyPool enemyPool;
     public BulletPool bulletPool;
 
-    public WaveScriptable waveScriptable;
+    public WaveScriptable stageWaves;
 
     public GameObject sanityItemPrefab;
     public Sprite sanityFull, sanityEmpty;
@@ -21,6 +22,9 @@ public class GameSceneController : MonoBehaviour {
 
     public WaveScriptable tutorialWaveScriptable;
     public WaveScriptable stage1WaveScriptable;
+
+    public GameObject overCanvasTrue;
+    public GameObject overCanvasDied;
 
     [Header("Debug")]
     public WaveScriptable[] waveScriptables;
@@ -40,19 +44,32 @@ public class GameSceneController : MonoBehaviour {
     }
 
     public Image fadeInImage;
+    public Text fadeInHint;
+    private int stageTotalEnemyCount = 0;
 
     void Start() {
         // 判断使用哪一个关卡
         if (GameManager.Instance.shouldGotoTutorial) {
-            waveScriptable = tutorialWaveScriptable;
+            stageWaves = tutorialWaveScriptable;
         } else {
-            waveScriptable = stage1WaveScriptable;
+            stageWaves = stage1WaveScriptable;
+        }
+        // 计算总怪数
+        foreach (var wave in stageWaves.waves) {
+            stageTotalEnemyCount += wave.waveEles.Length;
         }
 
+        FadeInEffect(()=>{
+            RealStart();
+        });
+    }
+
+    public void FadeInEffect(Action action) {
         // 渐入
         fadeInImage.transform.parent.gameObject.SetActive(true);
         Delay(()=>{
-            RealStart();
+            if (action != null)
+                action();
             fadeInImage.transform.parent.gameObject.SetActive(false);
         }, 1f);
     }
@@ -83,27 +100,27 @@ public class GameSceneController : MonoBehaviour {
 
         // For debug
         if (Input.GetKeyDown("1")) {
-            waveScriptable = waveScriptables[0];
+            stageWaves = waveScriptables[0];
         }
         if (Input.GetKeyDown("2")) {
-            waveScriptable = waveScriptables[1];
+            stageWaves = waveScriptables[1];
         }
         if (Input.GetKeyDown("3")) {
-            waveScriptable = waveScriptables[2];
+            stageWaves = waveScriptables[2];
         }
         if (Input.GetKeyDown("4")) {
-            waveScriptable = waveScriptables[3];
+            stageWaves = waveScriptables[3];
         }
-        waveHint.text = waveScriptable.name;
+        waveHint.text = stageWaves.name;
     }
 
     void CheckSpawn() {
-        if (currentWaveIndex + 1 >= waveScriptable.waves.Length) {
+        if (currentWaveIndex + 1 >= stageWaves.waves.Length) {
             // 游戏结束
             gameRunning = false;
             return;
         }
-        var nextWave = waveScriptable.waves[currentWaveIndex + 1];
+        var nextWave = stageWaves.waves[currentWaveIndex + 1];
         if (nextWave.time <= elapsedTime) {
             Debug.Log(nextWave.time);
             Debug.Log(currentWaveIndex);
@@ -121,7 +138,7 @@ public class GameSceneController : MonoBehaviour {
             GameObject enemy = null;
             Debug.Log(waveEle.enemyType);
             enemy = enemyPool.getOneInstance(waveEle.enemyType, waveEle.isRange);
-            enemy.transform.position = waveScriptable.positions[waveEle.positionIndex];
+            enemy.transform.position = stageWaves.positions[waveEle.positionIndex];
             // 设置 Enemy 的 character
             enemy.GetComponent<Enemy>().setCharacter(mainCharacter.gameObject);
         }
@@ -173,15 +190,52 @@ public class GameSceneController : MonoBehaviour {
         action();
     }
 
-    #region CLICK_HANDLE
-
-    #endregion
     public void OnEnemyDeath(Enemy enemy) {
-        ++ enemyDeathCount;
-        // TODO :
+        ++enemyDeathCount;
+        if (currentWaveIndex == stageWaves.waves.Length - 1) {
+            // 如果已经在最后一波，判断是否所有怪清完
+            Debug.Log("EnemyDeathCount " + enemyDeathCount + ", stageTotalEnemyCount " + stageTotalEnemyCount);
+            if (enemyDeathCount == stageTotalEnemyCount) {
+                Win();
+            }
+        }
     }
 
     public void OnPlayerDeath(Character character) {
-
+        Fail();
     }
+
+    public void Win() {
+        if (GameManager.Instance.shouldGotoTutorial) {
+            GameManager.Instance.shouldGotoTutorial = false;
+            fadeInHint.gameObject.SetActive(true);
+            FadeInEffect(null);
+            Delay(()=>{
+                SceneManager.LoadScene("GameScene");
+            }, 1f);
+        } else {
+            FadeInEffect(null);
+            overCanvasTrue.SetActive(true);
+        }
+        gameRunning = false;
+    }
+
+    public void Fail() {
+        FadeInEffect(null);
+        overCanvasDied.SetActive(true);
+        gameRunning = false;
+    }
+
+    #region CLICK_HANDLE
+
+    public void BackToTitle() {
+        GameManager.Instance.shouldGotoTutorial = true;
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    public void Restart() {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    #endregion
 }

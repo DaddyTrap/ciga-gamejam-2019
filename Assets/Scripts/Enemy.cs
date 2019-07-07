@@ -37,6 +37,7 @@ public abstract class Enemy : MonoBehaviour {
     }
     // 死亡
     protected void death () {
+        if (isDead) return;
         anim.Play ("Dead", 0, 0.0f);
         AudioInterface.Instance.playSE (AudioInterface.Instance.MonsterHurt);
         GameSceneController.instance.OnEnemyDeath (this);
