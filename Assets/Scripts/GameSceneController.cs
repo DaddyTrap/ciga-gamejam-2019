@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
+using System.Collections;
 
 public class GameSceneController : MonoBehaviour {
     public ShakeCamera shakeCamera;
@@ -13,6 +15,8 @@ public class GameSceneController : MonoBehaviour {
     public GameObject sanityItemPrefab;
     public Sprite sanityFull, sanityEmpty;
     public Transform sanityParent;
+
+    public Animator countdownAnimator;
 
     [Header("Debug")]
     public WaveScriptable[] waveScriptables;
@@ -29,6 +33,18 @@ public class GameSceneController : MonoBehaviour {
             Debug.LogWarning("出现了两个 GameSceneController");
         }
         gameRunning = false;
+    }
+
+    void Start() {
+        // TODO: 判断使用哪一个关卡
+
+        // 倒计时
+        countdownAnimator.gameObject.SetActive(true);
+        countdownAnimator.Play("Countdown", 0, 0f);
+        Delay(()=>{
+            countdownAnimator.gameObject.SetActive(false);
+            StartGame();
+        }, 3f);
     }
 
     float gameStartTime = 0f;
@@ -96,6 +112,9 @@ public class GameSceneController : MonoBehaviour {
         Debug.Log("GAME START!");
         InitGame();
         gameRunning = true;
+
+        // TODO: 根据关卡选择BGM
+        AudioInterface.Instance.playBGM(AudioInterface.Instance.Stage1BGM);
     }
 
     private Image[] sanityItems;
@@ -117,4 +136,17 @@ public class GameSceneController : MonoBehaviour {
             sanityItems[i].sprite = sanityEmpty;
         }
     }
+
+    void Delay(Action action, float time) {
+        StartCoroutine(_Delay(action, time));
+    }
+
+    IEnumerator _Delay(Action action, float time) {
+        yield return new WaitForSeconds(time);
+        action();
+    }
+
+    #region CLICK_HANDLE
+
+    #endregion
 }
