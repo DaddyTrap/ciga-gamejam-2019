@@ -220,8 +220,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 80}
+  m_SizeDelta: {x: -640, y: -360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1183731086
 MonoBehaviour:
@@ -236,14 +236,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.0627451, g: 0.0627451, b: 0.0627451, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b032d756dd9faa2489d9338127c526a8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -370,7 +370,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1590347758}
   - component: {fileID: 1590347757}
-  - component: {fileID: 1590347756}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -378,14 +377,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1590347756
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590347755}
-  m_Enabled: 1
 --- !u!20 &1590347757
 Camera:
   m_ObjectHideFlags: 0
@@ -396,7 +387,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.0627451, g: 0.0627451, b: 0.0627451, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -472,7 +463,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71c116374693bc4bb5298a84d90332c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cuts: []
+  imageObj: {fileID: 1183731084}
+  subTitleObj: {fileID: 1911631063}
+  cuts:
+  - image: {fileID: 21300000, guid: b032d756dd9faa2489d9338127c526a8, type: 3}
+    subtitle: "2088\u5E74\uFF0C\u5173\u4E8E\u4EFF\u751F\u4EBA\u7684\u79D1\u5B66\u7ADE\u8D5B\u8FDB\u5165\u4E86\u52A0\u901F\u671F\uFF0C\u79D1\u5B66\u5BB6\u4EEC\u521B\u9020\uFF0C\u57F9\u517B\uFF0C\u6D4B\u8BD5\uFF0C\u671F\u671B\u7740\u7ED3\u5408\u4E86\u751F\u7269\u9002\u5E94\u548C\u673A\u68B0\u7CBE\u5BC6\u7684\u9020\u7269\u80FD\u591F\u6210\u4E3A\u56FD\u5BB6\u7684\u65B0\u5E0C\u671B\uFF0C\u5E26\u6765\u53EA\u6709\u4EBA\u9020\u4E4B\u795E\u624D\u80FD\u5E26\u6765\u7684\u8F89\u714C\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: 0f97f716d833bde46b1a9cd415ecb822, type: 3}
+    subtitle: "\u4E00\u4EE3\u4EE3\u7684\u80DA\u80CE\u5728\u57F9\u517B\u76BF\u4E2D\u5FEB\u901F\u6210\u957F\uFF0C\u4EE5\u6700\u5FEB\u7684\u901F\u5EA6\u9A8C\u8BC1\u7740\u79D1\u5B66\u5BB6\u4EEC\u7684\u6BCF\u4E00\u4E2A\u8BBE\u8BA1\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: 2a53655c6805b7d44aebf516affe53a0, type: 3}
+    subtitle: "\u4F46\u5B8C\u7F8E\u603B\u662F\u7F55\u89C1\u7684\uFF0C\u65E0\u6570\u7684\u5931\u8D25\uFF0C\u6216\u662F\u6E90\u4E8E\u57FA\u56E0\u8BBE\u8BA1\u7684\u7F3A\u9677\uFF0C\u6216\u662F\u6E90\u4E8E\u667A\u80FD\u82AF\u7247\u7684\u843D\u540E\uFF0C\u6216\u662F\u6E90\u4E8E\u4EFF\u751F\u4EBA\u6210\u957F\u4E2D\u4EA7\u751F\u7684\u9053\u5FB7\u5F02\u5316\uFF0C\u6570\u4E0D\u6E05\u7684\u5C38\u4F53\uFF0C\u5E26\u6765\u4E86\u79D1\u5B66\u7684\u8FDB\u6B65\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: f4753c629543d2149be8c684524403b8, type: 3}
+    subtitle: "\u4E8C\u4EE3\u4EBA\u673A\u667A\u80FD\u82AF\u7247\u7684\u8BDE\u751F\uFF0C\u8BA9\u65B0\u751F\u7684\u80DA\u80CE\u4EEC\u66F4\u52A0\u4F18\u79C0\uFF0C\u66F4\u52A0\u534F\u8C03\uFF0C\u8FD9\u4FBF\u662F\u65B0\u7684\u5E0C\u671B"
+    duration: 2
+  - image: {fileID: 21300000, guid: 6167900b00d0ca44e8ff291fdce1075e, type: 3}
+    subtitle: "\u5B83\u4F1A\u88AB\u5B89\u88C5\u5728\u6BCF\u4E00\u4E2A\u65B0\u751F\u7684\u80CE\u513F\u80F8\u53E3\uFF0C\u56E0\u4E3A\u6211\u4EEC\u79BB\u5B8C\u7F8E\u53EA\u5DEE\u4E00\u6B65\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: 5fd8d9bb76974384f96213badb52154d, type: 3}
+    subtitle: "\u6210\u529F\u603B\u662F\u9700\u8981\u4E0D\u61C8\u7684\u52AA\u529B\uFF0C\u6211\u4EEC\u8BBE\u8BA1\u4E86\u65B0\u7684\u8BAD\u7EC3\u65B9\u6CD5"
+    duration: 2
+  - image: {fileID: 21300000, guid: 4ea086f5556e2cb4e82f13d36bf071e3, type: 3}
+    subtitle: "\u8BA1\u5212\u4E86\u65B0\u7684\u77E5\u8BC6\u7ED3\u6784\u548C\u7814\u53D1\u65B9\u5411"
+    duration: 2
+  - image: {fileID: 21300000, guid: 6b141c790f7142d49a5c69803edd9663, type: 3}
+    subtitle: "\u6211\u4EEC\u7533\u8BF7\u5230\u4E86\u65B0\u7684\u5927\u7B14\u7684\u8D44\u91D1"
+    duration: 2
+  - image: {fileID: 21300000, guid: 8094be73557e17e4ab2bf8c9d81d751c, type: 3}
+    subtitle: "\u56E0\u6B64\uFF0C222\u53F7\u57FA\u672C\u4E0A\u53EF\u4EE5\u79F0\u5F97\u4E0A\u662F\u7814\u7A76\u6240\u6700\u5B8C\u7F8E\u7684\u4F5C\u54C1\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: 8bedadf910d425a4d8bbd3a809df5a42, type: 3}
+    subtitle: "\u5979\u7F8E\u8C8C\uFF0C\u806A\u6167\uFF0C\u4F18\u96C5\uFF0C\u5584\u826F\uFF0C\u575A\u97E7\uFF0C\u7406\u667A\uFF0C\u542C\u4ECE\u6307\u6325\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: bf45ad616c968854f9a003de7c6044e4, type: 3}
+    subtitle: "\u5C31\u8FDE\u5979\u7684\u7761\u8138\uFF0C\u90FD\u5982\u6B64\u5B8C\u7F8E\uFF0C\u6216\u8BB8\uFF0C\u6211\u4EEC\u79BB\u6700\u7EC8\u7684\u76EE\u6807\u8FD1\u4E86\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: c1edd26f2d5ee07409009e1145e4ead6, type: 3}
+    subtitle: "\u53EA\u8981\u2026\u2026222\u53F7\u901A\u8FC7\u5C5E\u4E8E\u5979\u7684\u5FC3\u7406\u6D4B\u5B9A\u3002"
+    duration: 2
+  - image: {fileID: 21300000, guid: 88401bddce772d546a78f88a7f4b78bd, type: 3}
+    subtitle: "\u8BF7\u7528\u4F60\u7684\u773C\u775B\u6CE8\u89C6\u6211\uFF0C\u4EBA\u9020\u4EBA222\u53F7\u3002\u91CD\u590D\u8FD9\u53E5\u8BDD\u7684\u6838\u5FC3\uFF0C\u201C\u7EC6\u80DE\u5728\u94C1\u58C1\u4E2D\u751F\u957F\uFF0C\u5B83\u65E0\u6CD5\u770B\u5230\uFF0C\u53EA\u80FD\u611F\u53D7\uFF0C\u5B83\u65E0\u6CD5\u8868\u8FBE\uFF0C\u53EA\u80FD\u6C89\u9ED8\u3002\u7EC6\u80DE\u662F\u5B64\u72EC\u7684\u5417\uFF1F\u201D\u7EC6\u80DE\u662F\u5B64\u72EC\u7684\u5417\uFF1F\""
+    duration: 2
+  - image: {fileID: 21300000, guid: 2f1462fab81063845a693b0b5d880f24, type: 3}
+    subtitle: "\"\u7EC6\u80DE\u662F\u5B64\u2026\u2026\""
+    duration: 2
+  - image: {fileID: 21300000, guid: 2f1462fab81063845a693b0b5d880f24, type: 3}
+    subtitle: "\u4EBA\u9020\u4EBA222\u53F7\u50AC\u7720\u6210\u529F\uFF0C\u82AF\u7247\u6743\u9650\u7533\u8BF7\uFF0C\u6DF1\u5C42\u68A6\u5883\u6784\u5EFA\u5B8C\u6210\uFF0C\u6F5C\u610F\u8BC6\u8BC4\u6D4B\u5F00\u59CB\u3002"
+    duration: 2
 --- !u!4 &1819533642
 Transform:
   m_ObjectHideFlags: 0
@@ -519,10 +557,10 @@ RectTransform:
   m_Father: {fileID: 1321548616}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -319}
-  m_SizeDelta: {x: 1600, y: 300}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 140}
+  m_SizeDelta: {x: 1600, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911631065
 MonoBehaviour:
@@ -537,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -546,7 +584,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 108
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -557,9 +595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ff
-
-    ff'
+  m_Text: 
 --- !u!222 &1911631066
 CanvasRenderer:
   m_ObjectHideFlags: 0
