@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameSceneController : MonoBehaviour {
     public ShakeCamera shakeCamera;
@@ -8,6 +9,10 @@ public class GameSceneController : MonoBehaviour {
     public BulletPool bulletPool;
 
     public WaveScriptable waveScriptable;
+
+    [Header("Debug")]
+    public WaveScriptable[] waveScriptables;
+    public Text waveHint;
 
     public bool gameRunning { get; set; }
 
@@ -35,6 +40,21 @@ public class GameSceneController : MonoBehaviour {
             gameStartTime = Time.time;
             StartGame();
         }
+
+        // For debug
+        if (Input.GetKeyDown("1")) {
+            waveScriptable = waveScriptables[0];
+        }
+        if (Input.GetKeyDown("2")) {
+            waveScriptable = waveScriptables[1];
+        }
+        if (Input.GetKeyDown("3")) {
+            waveScriptable = waveScriptables[2];
+        }
+        if (Input.GetKeyDown("4")) {
+            waveScriptable = waveScriptables[3];
+        }
+        waveHint.text = waveScriptable.name;
     }
 
     void CheckSpawn() {

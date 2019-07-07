@@ -88,15 +88,25 @@ public class Enemy_Range : Enemy {
 
     void OnCollisionEnter2D (Collision2D other) {
         string otherTag = other.collider.tag;
-        if (otherTag == "Character" || otherTag == "CharacterBullet") {
+        if (otherTag == "Character") {
             death ();
+        } else if (otherTag == "CharacterBullet") {
+            var bullet = other.collider.GetComponent<Bullet>();
+            if (bullet.shape == enemyType) {
+                death();
+            }
         }
     }
 
     void OnTriggerEnter2D (Collider2D other) {
         string otherTag = other.tag;
-        if (otherTag == "Character" || otherTag == "CharacterBullet") {
+        if (otherTag == "Character") {
             death ();
+        } else if (otherTag == "CharacterBullet") {
+            var bullet = other.GetComponent<Bullet>();
+            if (bullet.shape == enemyType) {
+                death();
+            }
         }
     }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e2f012eb40cc8645a1b45947e9eb0e3, type: 3}
-  m_Name: Stage1Waves
+  m_Name: Stage1Waves_Xiaojian
   m_EditorClassIdentifier: 
   positions:
   - {x: -9, y: 6, z: 0}
@@ -136,9 +136,6 @@ MonoBehaviour:
     - positionIndex: 8
       enemyType: 0
       isRange: 0
-    - positionIndex: 8
-      enemyType: 0
-      isRange: 0
   - time: 29
     waveEles:
     - positionIndex: 0
@@ -165,9 +162,6 @@ MonoBehaviour:
     - positionIndex: 7
       enemyType: 0
       isRange: 1
-    - positionIndex: 8
-      enemyType: 0
-      isRange: 0
     - positionIndex: 8
       enemyType: 0
       isRange: 0
@@ -209,9 +203,6 @@ MonoBehaviour:
     - positionIndex: 7
       enemyType: 0
       isRange: 1
-    - positionIndex: 8
-      enemyType: 0
-      isRange: 0
     - positionIndex: 8
       enemyType: 0
       isRange: 0
@@ -308,10 +299,10 @@ MonoBehaviour:
       isRange: 0
     - positionIndex: 0
       enemyType: 0
-      isRange: 1
+      isRange: 0
     - positionIndex: 0
       enemyType: 0
-      isRange: 1
+      isRange: 0
     - positionIndex: 0
       enemyType: 0
       isRange: 1
@@ -361,7 +352,7 @@ MonoBehaviour:
       isRange: 0
     - positionIndex: 7
       enemyType: 0
-      isRange: 1
+      isRange: 0
     - positionIndex: 7
       enemyType: 0
       isRange: 1
@@ -373,16 +364,13 @@ MonoBehaviour:
       isRange: 0
     - positionIndex: 8
       enemyType: 1
-      isRange: 1
-    - positionIndex: 8
-      enemyType: 1
-      isRange: 1
+      isRange: 0
     - positionIndex: 8
       enemyType: 0
       isRange: 0
     - positionIndex: 8
       enemyType: 0
-      isRange: 1
+      isRange: 0
     - positionIndex: 8
       enemyType: 0
       isRange: 1
@@ -391,9 +379,6 @@ MonoBehaviour:
     - positionIndex: 0
       enemyType: 1
       isRange: 0
-    - positionIndex: 0
-      enemyType: 1
-      isRange: 1
     - positionIndex: 0
       enemyType: 1
       isRange: 1
@@ -410,15 +395,9 @@ MonoBehaviour:
       enemyType: 1
       isRange: 1
     - positionIndex: 3
-      enemyType: 1
-      isRange: 1
-    - positionIndex: 3
       enemyType: 0
       isRange: 0
     - positionIndex: 3
-      enemyType: 0
-      isRange: 1
-    - positionIndex: 5
       enemyType: 0
       isRange: 1
     - positionIndex: 5
@@ -450,9 +429,6 @@ MonoBehaviour:
     - positionIndex: 2
       enemyType: 0
       isRange: 1
-    - positionIndex: 2
-      enemyType: 0
-      isRange: 1
     - positionIndex: 3
       enemyType: 1
       isRange: 0
@@ -468,9 +444,6 @@ MonoBehaviour:
     - positionIndex: 5
       enemyType: 0
       isRange: 0
-    - positionIndex: 5
-      enemyType: 0
-      isRange: 1
     - positionIndex: 5
       enemyType: 0
       isRange: 1
@@ -544,7 +517,7 @@ MonoBehaviour:
       isRange: 0
     - positionIndex: 3
       enemyType: 0
-      isRange: 1
+      isRange: 0
     - positionIndex: 3
       enemyType: 0
       isRange: 1
@@ -553,7 +526,7 @@ MonoBehaviour:
       isRange: 0
     - positionIndex: 6
       enemyType: 0
-      isRange: 1
+      isRange: 0
     - positionIndex: 6
       enemyType: 0
       isRange: 1
@@ -603,21 +576,12 @@ MonoBehaviour:
     - positionIndex: 5
       enemyType: 0
       isRange: 0
-    - positionIndex: 5
-      enemyType: 0
-      isRange: 1
     - positionIndex: 6
-      enemyType: 0
-      isRange: 0
-    - positionIndex: 6
-      enemyType: 0
-      isRange: 1
-    - positionIndex: 7
       enemyType: 0
       isRange: 0
     - positionIndex: 7
       enemyType: 0
-      isRange: 1
+      isRange: 0
     - positionIndex: 8
       enemyType: 0
       isRange: 0
@@ -650,21 +614,12 @@ MonoBehaviour:
     - positionIndex: 5
       enemyType: 1
       isRange: 0
-    - positionIndex: 5
-      enemyType: 1
-      isRange: 1
     - positionIndex: 6
-      enemyType: 1
-      isRange: 0
-    - positionIndex: 6
-      enemyType: 1
-      isRange: 1
-    - positionIndex: 7
       enemyType: 1
       isRange: 0
     - positionIndex: 7
       enemyType: 1
-      isRange: 1
+      isRange: 0
     - positionIndex: 8
       enemyType: 1
       isRange: 0
@@ -685,9 +640,6 @@ MonoBehaviour:
     - positionIndex: 3
       enemyType: 1
       isRange: 0
-    - positionIndex: 3
-      enemyType: 1
-      isRange: 1
     - positionIndex: 6
       enemyType: 0
       isRange: 0
@@ -697,12 +649,6 @@ MonoBehaviour:
     - positionIndex: 7
       enemyType: 0
       isRange: 1
-    - positionIndex: 7
-      enemyType: 0
-      isRange: 1
-    - positionIndex: 8
-      enemyType: 0
-      isRange: 0
     - positionIndex: 8
       enemyType: 0
       isRange: 0
@@ -744,12 +690,6 @@ MonoBehaviour:
     - positionIndex: 7
       enemyType: 1
       isRange: 1
-    - positionIndex: 7
-      enemyType: 1
-      isRange: 1
-    - positionIndex: 8
-      enemyType: 1
-      isRange: 0
     - positionIndex: 8
       enemyType: 1
       isRange: 0
@@ -780,9 +720,6 @@ MonoBehaviour:
       enemyType: 1
       isRange: 1
     - positionIndex: 3
-      enemyType: 1
-      isRange: 1
-    - positionIndex: 3
       enemyType: 0
       isRange: 0
     - positionIndex: 3
@@ -800,9 +737,6 @@ MonoBehaviour:
     - positionIndex: 5
       enemyType: 0
       isRange: 0
-    - positionIndex: 5
-      enemyType: 0
-      isRange: 1
     - positionIndex: 5
       enemyType: 0
       isRange: 1

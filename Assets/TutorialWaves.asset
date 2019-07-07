@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: TutorialWaves
   m_EditorClassIdentifier: 
   positions:
-  - {x: -8, y: 6, z: 0}
+  - {x: -9, y: 6, z: 0}
   - {x: 0, y: 6, z: 0}
-  - {x: 8, y: 6, z: 0}
-  - {x: -8, y: 0, z: 0}
+  - {x: 9, y: 6, z: 0}
+  - {x: -9, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 8, y: 0, z: 0}
-  - {x: -8, y: -6, z: 0}
+  - {x: 9, y: 0, z: 0}
+  - {x: -9, y: -6, z: 0}
   - {x: 0, y: -6, z: 0}
-  - {x: 8, y: -6, z: 0}
+  - {x: 9, y: -6, z: 0}
   waves:
   - time: 3
     waveEles:

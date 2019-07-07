@@ -9,6 +9,7 @@ TagManager:
   - Character
   - Enemy
   - Bound
+  - Wall
   layers:
   - Default
   - TransparentFX

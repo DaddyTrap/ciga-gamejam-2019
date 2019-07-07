@@ -33,6 +33,9 @@ public class Bullet : MonoBehaviour {
                 enemy.BeDamaged();
             }
             gameObject.SetActive(false);
+        } else if (collider.tag == "Wall") {
+            // 碰到墙，消失
+            gameObject.SetActive(false);
         }
     }
 
