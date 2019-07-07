@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 
 public class GameSceneController : MonoBehaviour {
+    private int enemyDeathCount;
     public ShakeCamera shakeCamera;
     public Character mainCharacter;
     public EnemyPool enemyPool;
@@ -126,6 +127,8 @@ public class GameSceneController : MonoBehaviour {
             sanityItems[i] = Instantiate<GameObject>(sanityItemPrefab, sanityParent).GetComponent<Image>();
         }
         ChangeSanity(mainCharacter.sanity);
+        // 初始化敌人死亡计数
+        enemyDeathCount = 0;
     }
 
     public void ChangeSanity(int sanity) {
@@ -149,4 +152,12 @@ public class GameSceneController : MonoBehaviour {
     #region CLICK_HANDLE
 
     #endregion
+    public void OnEnemyDeath(Enemy enemy) {
+        ++ enemyDeathCount;
+        // TODO :
+    }
+
+    public void OnPlayerDeath(Character character) {
+
+    }
 }
