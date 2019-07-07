@@ -20,5 +20,5 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public bool firstTimeChallenge = true;
+    public bool shouldGotoTutorial = true;
 }

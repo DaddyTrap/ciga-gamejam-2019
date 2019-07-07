@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
+using System.Collections;
 
 public class GameSceneController : MonoBehaviour {
     private int enemyDeathCount;
@@ -14,6 +16,11 @@ public class GameSceneController : MonoBehaviour {
     public GameObject sanityItemPrefab;
     public Sprite sanityFull, sanityEmpty;
     public Transform sanityParent;
+
+    public Animator countdownAnimator;
+
+    public WaveScriptable tutorialWaveScriptable;
+    public WaveScriptable stage1WaveScriptable;
 
     [Header("Debug")]
     public WaveScriptable[] waveScriptables;
@@ -32,6 +39,34 @@ public class GameSceneController : MonoBehaviour {
         gameRunning = false;
     }
 
+    public Image fadeInImage;
+
+    void Start() {
+        // 判断使用哪一个关卡
+        if (GameManager.Instance.shouldGotoTutorial) {
+            waveScriptable = tutorialWaveScriptable;
+        } else {
+            waveScriptable = stage1WaveScriptable;
+        }
+
+        // 渐入
+        fadeInImage.transform.parent.gameObject.SetActive(true);
+        Delay(()=>{
+            RealStart();
+            fadeInImage.transform.parent.gameObject.SetActive(false);
+        }, 1f);
+    }
+
+    void RealStart() {
+        // 倒计时
+        countdownAnimator.gameObject.SetActive(true);
+        countdownAnimator.Play("Countdown", 0, 0f);
+        Delay(()=>{
+            countdownAnimator.gameObject.SetActive(false);
+            StartGame();
+        }, 3f);
+    }
+
     float gameStartTime = 0f;
     float elapsedTime = 0f;
     void Update() {
@@ -41,11 +76,11 @@ public class GameSceneController : MonoBehaviour {
             CheckSpawn();
             CheckSpawnTriangle();
         }
-        if (Input.GetKeyDown(KeyCode.F) && !gameRunning) {
-            gameRunning = true;
-            gameStartTime = Time.time;
-            StartGame();
-        }
+        // if (Input.GetKeyDown(KeyCode.F) && !gameRunning) {
+        //     gameRunning = true;
+        //     gameStartTime = Time.time;
+        //     StartGame();
+        // }
 
         // For debug
         if (Input.GetKeyDown("1")) {
@@ -97,10 +132,18 @@ public class GameSceneController : MonoBehaviour {
     }
 
     public void StartGame() {
-        // TODO: Game Init
+        // Game Init
         Debug.Log("GAME START!");
         InitGame();
         gameRunning = true;
+        gameStartTime = Time.time;
+
+        // 根据关卡选择BGM
+        if (GameManager.Instance.shouldGotoTutorial) {
+            AudioInterface.Instance.playBGM(AudioInterface.Instance.Stage0BGM);
+        } else {
+            AudioInterface.Instance.playBGM(AudioInterface.Instance.Stage1BGM);
+        }
     }
 
     private Image[] sanityItems;
@@ -124,9 +167,22 @@ public class GameSceneController : MonoBehaviour {
             sanityItems[i].sprite = sanityEmpty;
         }
     }
+
+    void Delay(Action action, float time) {
+        StartCoroutine(_Delay(action, time));
+    }
+
+    IEnumerator _Delay(Action action, float time) {
+        yield return new WaitForSeconds(time);
+        action();
+    }
+
+    #region CLICK_HANDLE
+
+    #endregion
     public void OnEnemyDeath(Enemy enemy) {
         ++ enemyDeathCount;
-        // TODO : 
+        // TODO :
     }
 
     public void OnPlayerDeath(Character character) {
