@@ -48,14 +48,14 @@ MonoBehaviour:
   audioSource: {fileID: -116937694417220599}
   MonsterShoot: {fileID: 8300000, guid: 5f458eb596b22814a838c41806aaa249, type: 3}
   MonsterHit: {fileID: 8300000, guid: 62bb109cb9b6fb146a8db6bcd36d38be, type: 3}
-  ShootLeft: {fileID: 8300000, guid: 443a4f98a4d9e4440bc9c1da30162bca, type: 3}
+  ShootLeft: {fileID: 8300000, guid: 6d3fa7a19830cde4c95da4de81c837c3, type: 3}
   ShootRight: {fileID: 8300000, guid: a42648970ac59774995dfdbd734ab67c, type: 3}
   PlayerHurt: {fileID: 8300000, guid: 42696b7f23b2b274d85acdd357bfa789, type: 3}
-  MonsterHurt: {fileID: 8300000, guid: 26c6aa966809f314ea407035f99c0fbc, type: 3}
+  MonsterHurt: {fileID: 8300000, guid: d637056ad70d1f24bbf37e2839732deb, type: 3}
   DeathSE: {fileID: 8300000, guid: 7fd14fdba71bc994ab5c59b2e8a68f54, type: 3}
   VictorySE: {fileID: 8300000, guid: 816a50307e1d77d49a73d8d3e313e6e2, type: 3}
   PlayerTransform: {fileID: 8300000, guid: 98f84aec63ae5d04d9330d61e472cb0c, type: 3}
-  BatShoot: {fileID: 8300000, guid: cdd6cced2fcfc3a4e9eb185d55ae68dd, type: 3}
+  BatShoot: {fileID: 8300000, guid: 62d76edeb4a89644baff69f408597685, type: 3}
   TitleBGM: {fileID: 8300000, guid: e8394c6a1670fb34c80c6e2323f778d2, type: 3}
   CutSceneComicBGM: {fileID: 8300000, guid: ec6dfd147a42cb24ab571c5109c32735, type: 3}
   Stage0BGM: {fileID: 8300000, guid: 3ac061550b8a99f41ba90add5b8c98bd, type: 3}
