@@ -21,7 +21,7 @@ public class OPSceneController : MonoBehaviour {
         if (SceneManager.GetActiveScene ().name == "GoodEnd") {
             AudioInterface.Instance.playBGM (AudioInterface.Instance.GoodEndBGM);
         } else {
-            AudioInterface.Instance.playBGM (AudioInterface.Instance.CutSceneComicBGM);
+            AudioInterface.Instance.playBGM (AudioInterface.Instance.CutSceneComicBGM, false);
         }
         showCut (0);
     }
@@ -75,7 +75,7 @@ public class OPSceneController : MonoBehaviour {
             }, cuts[index].duration);
         }, 1.0f);
     }
-    // 延迟 
+    // 延迟
     public void delay (Action act, float duration) {
         StartCoroutine (_delay (act, duration));
     }

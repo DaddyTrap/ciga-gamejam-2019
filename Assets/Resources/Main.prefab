@@ -95,7 +95,7 @@ MonoBehaviour:
   PlayerTransform: {fileID: 8300000, guid: 98f84aec63ae5d04d9330d61e472cb0c, type: 3}
   BatShoot: {fileID: 8300000, guid: 62d76edeb4a89644baff69f408597685, type: 3}
   TitleBGM: {fileID: 8300000, guid: e8394c6a1670fb34c80c6e2323f778d2, type: 3}
-  CutSceneComicBGM: {fileID: 8300000, guid: ec6dfd147a42cb24ab571c5109c32735, type: 3}
+  CutSceneComicBGM: {fileID: 8300000, guid: 9e8ccd5f708470d44a84201f776331cd, type: 3}
   Stage0BGM: {fileID: 8300000, guid: 3ac061550b8a99f41ba90add5b8c98bd, type: 3}
   Stage1BGM: {fileID: 8300000, guid: dfa37840397fa5448badf3a64b5a7fac, type: 3}
   TrueEndBGM: {fileID: 8300000, guid: 13699b4767c2ac4419d273f6ba2e65ef, type: 3}
