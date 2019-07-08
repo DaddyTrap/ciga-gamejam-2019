@@ -5,15 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleSceneControl : MonoBehaviour {
-    private bool inTitle, inCredit;
-    public GameObject titleObj, creditObj, backObj;
+    private bool inCredit, inTutorial;
+    public GameObject titleObj, creditObj, backObj, tutorialObj;
     public string sceneName;
     // public GameObject audioCtrlPrefab;
 
     public Text difficultyText;
 
     void Start () {
-        inTitle = true;
         inCredit = false;
         AudioInterface.Instance.playBGM (AudioInterface.Instance.TitleBGM);
 
@@ -39,7 +38,6 @@ public class TitleSceneControl : MonoBehaviour {
 
     private void quitCredit () {
         inCredit = false;
-        inTitle = true;
         backObj.SetActive (false);
         creditObj.SetActive (false);
 
@@ -53,7 +51,7 @@ public class TitleSceneControl : MonoBehaviour {
 
     public void clickCredit () {
         inCredit = true;
-        inTitle = false;
+
         creditObj.SetActive (true);
         backObj.SetActive (true);
 
@@ -66,5 +64,26 @@ public class TitleSceneControl : MonoBehaviour {
         if (inCredit) {
             quitCredit();
         }
+        if (inTutorial) {
+            quitTutorial();
+        }
+    }
+
+    public void clickTutorial() {
+        inTutorial = true;
+
+        tutorialObj.SetActive(true);
+        backObj.SetActive(true);
+
+        titleObj.SetActive(false);
+    }
+
+    void quitTutorial() {
+        inTutorial = false;
+
+        tutorialObj.SetActive(false);
+        backObj.SetActive(false);
+
+        titleObj.SetActive(true);
     }
 }

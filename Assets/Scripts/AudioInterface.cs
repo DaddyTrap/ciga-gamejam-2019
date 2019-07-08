@@ -24,8 +24,9 @@ public class AudioInterface : MonoBehaviour {
     public void playSE (AudioClip _se) {
         audioSource.PlayOneShot (_se);
     }
-    public void playBGM (AudioClip _bgm) {
+    public void playBGM (AudioClip _bgm, bool loop = true) {
         audioSource.clip = _bgm;
+        audioSource.loop = loop;
         audioSource.Play ();
     }
     static AudioInterface _instance;
@@ -37,7 +38,7 @@ public class AudioInterface : MonoBehaviour {
                 return _instance;
             }
         }
-    } 
+    }
     void Awake () {
         _instance = this;
     }
