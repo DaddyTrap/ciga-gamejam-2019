@@ -21,7 +21,7 @@ public class Enemy_Close : Enemy {
 
     // 行为管理器
     protected override void enemyAction () {
-        if (isDead) return;
+        if (isDead || !GameSceneController.instance.gameRunning) return;
         var currentTime = Time.time;
         bool needFollow = (currentTime - lastFollowTime >= followGap) ? true : false;
         // 跟踪
