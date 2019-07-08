@@ -43,7 +43,7 @@ public class GameSceneController : MonoBehaviour {
         gameRunning = false;
     }
 
-    public Image fadeInImage;
+    public Animator fadeImageAnimator;
     public Text fadeInHint;
     private int stageTotalEnemyCount = 0;
 
@@ -66,11 +66,23 @@ public class GameSceneController : MonoBehaviour {
 
     public void FadeInEffect(Action action) {
         // 渐入
-        fadeInImage.transform.parent.gameObject.SetActive(true);
+        fadeImageAnimator.transform.parent.gameObject.SetActive(true);
+        fadeImageAnimator.Play("FadeIn");
         Delay(()=>{
             if (action != null)
                 action();
-            fadeInImage.transform.parent.gameObject.SetActive(false);
+            fadeImageAnimator.transform.parent.gameObject.SetActive(false);
+        }, 1f);
+    }
+
+    public void FadeOutEffect(Action action) {
+        // 渐入
+        fadeImageAnimator.transform.parent.gameObject.SetActive(true);
+        fadeImageAnimator.Play("FadeOut");
+        Delay(()=>{
+            if (action != null)
+                action();
+            fadeImageAnimator.transform.parent.gameObject.SetActive(false);
         }, 1f);
     }
 
@@ -119,7 +131,7 @@ public class GameSceneController : MonoBehaviour {
     bool spawned140 = false;
     void CheckSpawnTriangle () {
         if (!GameManager.Instance.shouldGotoTutorial) {
-            if (!spawned80 && elapsedTime > 80f) {
+            if (!spawned80 && elapsedTime > 5f) {
                 spawned80 = true;
                 var triangle = enemyPool.getOneInstance(Shape.TRIANGLE, false);
                 triangle.transform.position = new Vector3(0, 6f, 0f);
@@ -228,13 +240,14 @@ public class GameSceneController : MonoBehaviour {
         if (GameManager.Instance.shouldGotoTutorial) {
             GameManager.Instance.shouldGotoTutorial = false;
             fadeInHint.gameObject.SetActive(true);
-            FadeInEffect(null);
+            FadeOutEffect(null);
             Delay(()=>{
                 SceneManager.LoadScene("GameScene");
             }, 1f);
         } else {
             FadeInEffect(null);
             overCanvasTrue.SetActive(true);
+            AudioInterface.Instance.playBGM(AudioInterface.Instance.TrueEndBGM);
         }
         gameRunning = false;
     }
@@ -242,6 +255,7 @@ public class GameSceneController : MonoBehaviour {
     public void Fail() {
         FadeInEffect(null);
         overCanvasDied.SetActive(true);
+        AudioInterface.Instance.playBGM(AudioInterface.Instance.BadEndBGM);
         gameRunning = false;
     }
 

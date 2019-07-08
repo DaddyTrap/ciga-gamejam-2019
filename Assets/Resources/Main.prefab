@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da84716105d39d44bb137022db22c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldGotoTutorial: 1
+  shouldGotoTutorial: 0
 --- !u!114 &8013884046088735275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   Stage1BGM: {fileID: 8300000, guid: dfa37840397fa5448badf3a64b5a7fac, type: 3}
   TrueEndBGM: {fileID: 8300000, guid: 13699b4767c2ac4419d273f6ba2e65ef, type: 3}
   BadEndBGM: {fileID: 8300000, guid: ca8bfe676c925244089cf6e83357087b, type: 3}
-  GoodEndBGM: {fileID: 8300000, guid: c46f8d68cd65fc54893f224d849c3934, type: 3}
+  GoodEndBGM: {fileID: 8300000, guid: 52584afbb5aad4b4fb622aa9e36be389, type: 3}
 --- !u!81 &7051589265020110084
 AudioListener:
   m_ObjectHideFlags: 0

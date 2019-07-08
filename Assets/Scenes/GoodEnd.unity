@@ -350,6 +350,9 @@ MonoBehaviour:
   - image: {fileID: 21300000, guid: 50cf34fa5d3ec8d4c938dd6fd8eaf679, type: 3}
     subtitle: 
     duration: 1
+  - image: {fileID: 21300000, guid: 2f1462fab81063845a693b0b5d880f24, type: 3}
+    subtitle: "\u7ED3\u5C40\uFF1A\u5E0C\u671B"
+    duration: 4
 --- !u!4 &1148512786
 Transform:
   m_ObjectHideFlags: 0
@@ -403,7 +406,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -438,9 +441,9 @@ RectTransform:
   m_Father: {fileID: 1065127913}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 140}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1600, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1721066341
