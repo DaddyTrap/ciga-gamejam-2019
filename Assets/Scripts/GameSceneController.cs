@@ -72,9 +72,9 @@ public class GameSceneController : MonoBehaviour {
         fadeImageAnimator.transform.parent.gameObject.SetActive(true);
         fadeImageAnimator.Play("FadeIn");
         Delay(()=>{
+            fadeImageAnimator.transform.parent.gameObject.SetActive(false);
             if (action != null)
                 action();
-            fadeImageAnimator.transform.parent.gameObject.SetActive(false);
         }, 0.8f);
     }
 
@@ -83,10 +83,16 @@ public class GameSceneController : MonoBehaviour {
         fadeImageAnimator.transform.parent.gameObject.SetActive(true);
         fadeImageAnimator.Play("FadeOut");
         Delay(()=>{
+            fadeImageAnimator.transform.parent.gameObject.SetActive(false);
             if (action != null)
                 action();
-            fadeImageAnimator.transform.parent.gameObject.SetActive(false);
         }, 0.8f);
+    }
+
+    public void FadeOutIn(Action action = null) {
+        FadeOutEffect(()=>{
+            FadeInEffect(action);
+        });
     }
 
     public void FadeOutWhiteEffect(Action action) {
@@ -161,18 +167,14 @@ public class GameSceneController : MonoBehaviour {
     }
     void CheckSpawn() {
         if (currentWaveIndex + 1 >= stageWaves.waves.Length) {
-            // 游戏结束
-            gameRunning = false;
             return;
         }
         var nextWave = stageWaves.waves[currentWaveIndex + 1];
         if (nextWave.time <= elapsedTime) {
-            Debug.Log(nextWave.time);
-            Debug.Log(currentWaveIndex);
             // 刷这一波
             SpawnWave(nextWave);
             currentWaveIndex = currentWaveIndex + 1;
-            Debug.Log(currentWaveIndex);
+            Debug.Log("当前波数：" + currentWaveIndex);
         }
     }
 
@@ -181,7 +183,6 @@ public class GameSceneController : MonoBehaviour {
     void SpawnWave(WaveScriptable.Wave wave) {
         foreach (var waveEle in wave.waveEles) {
             GameObject enemy = null;
-            Debug.Log(waveEle.enemyType);
             enemy = enemyPool.getOneInstance(waveEle.enemyType, waveEle.isRange);
             enemy.transform.position = stageWaves.positions[waveEle.positionIndex];
             // 设置 Enemy 的 character
@@ -251,26 +252,32 @@ public class GameSceneController : MonoBehaviour {
     }
 
     public void Win() {
+        gameRunning = false;
         if (GameManager.Instance.shouldGotoTutorial) {
             GameManager.Instance.shouldGotoTutorial = false;
             fadeInHint.gameObject.SetActive(true);
-            FadeOutEffect(null);
-            Delay(()=>{
+            FadeOutEffect(()=>{
                 SceneManager.LoadScene("GameScene");
-            }, 1f);
+            });
+            // Delay(()=>{
+            //     SceneManager.LoadScene("GameScene");
+            // }, 1f);
         } else {
-            FadeInEffect(null);
-            overCanvasTrue.SetActive(true);
-            AudioInterface.Instance.playBGM(AudioInterface.Instance.TrueEndBGM);
+            FadeOutEffect(()=>{
+                overCanvasTrue.SetActive(true);
+                AudioInterface.Instance.playBGM(AudioInterface.Instance.TrueEndBGM);
+                FadeInEffect(null);
+            });
         }
-        gameRunning = false;
     }
 
     public void Fail() {
-        FadeInEffect(null);
-        overCanvasDied.SetActive(true);
-        AudioInterface.Instance.playBGM(AudioInterface.Instance.BadEndBGM);
         gameRunning = false;
+        FadeOutEffect(()=>{
+            overCanvasDied.SetActive(true);
+            AudioInterface.Instance.playBGM(AudioInterface.Instance.BadEndBGM);
+            FadeInEffect(null);
+        });
     }
 
     #region CLICK_HANDLE
