@@ -115,8 +115,23 @@ public class GameSceneController : MonoBehaviour {
         waveHint.text = stageWaves.name;
     }
 
+    bool spawned80 = false;
+    bool spawned140 = false;
     void CheckSpawnTriangle () {
-
+        if (!GameManager.Instance.shouldGotoTutorial) {
+            if (!spawned80 && elapsedTime > 80f) {
+                spawned80 = true;
+                var triangle = enemyPool.getOneInstance(Shape.TRIANGLE, false);
+                triangle.transform.position = new Vector3(0, 6f, 0f);
+                triangle.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3f);
+            }
+            if (!spawned140 && elapsedTime > 140f) {
+                spawned140 = true;
+                var triangle = enemyPool.getOneInstance(Shape.TRIANGLE, false);
+                triangle.transform.position = new Vector3(8f, 3f, 0f);
+                triangle.GetComponent<Rigidbody2D>().velocity = new Vector2(-3f, 0);
+            }
+        }
     }
     void CheckSpawn() {
         if (currentWaveIndex + 1 >= stageWaves.waves.Length) {
@@ -243,6 +258,6 @@ public class GameSceneController : MonoBehaviour {
 
     #endregion
     public void goodEnd () {
-
+        SceneManager.LoadScene("GoodEnd");
     }
 }

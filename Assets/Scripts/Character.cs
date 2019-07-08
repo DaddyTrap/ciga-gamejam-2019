@@ -225,6 +225,12 @@ public class Character : MonoBehaviour {
         }, 0.6f);
     }
 
+    public void OnTriggerEnter2D (Collider2D other) {
+        if (other.tag == "Enemy" && other.GetComponent<Enemy>().enemyType == Shape.TRIANGLE && currentShape == Shape.TRIANGLE) {
+            GameSceneController.instance.goodEnd ();
+        }
+    }
+
     // 延迟
     public void delay (Action act, float duration) {
         StartCoroutine (_delay (act, duration));

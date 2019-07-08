@@ -1855,11 +1855,11 @@ MonoBehaviour:
   closeAnims:
   - {fileID: 22100000, guid: 51c7d150787ad5644a612c83a46d9f66, type: 2}
   - {fileID: 22100000, guid: 605ab9e762947b442abf0c5d14987c26, type: 2}
-  triangleAnims: {fileID: 9100000, guid: c2c605c611a01cf4fb960655cf5bb087, type: 2}
+  triangleAnims: {fileID: 9100000, guid: 259803733db8dc44d807e4c768ffcb75, type: 2}
   enemySprite:
-  - {fileID: -8879575351698920438, guid: 1c6ac7f97821ce54c9a32c9a37ce3354, type: 3}
-  - {fileID: -8879575351698920438, guid: 1c6ac7f97821ce54c9a32c9a37ce3354, type: 3}
-  - {fileID: -8879575351698920438, guid: 1c6ac7f97821ce54c9a32c9a37ce3354, type: 3}
+  - {fileID: -3795437932344149621, guid: 6baf922dcff02ef409cf3b75a71ec239, type: 3}
+  - {fileID: -3795437932344149621, guid: 6baf922dcff02ef409cf3b75a71ec239, type: 3}
+  - {fileID: -3795437932344149621, guid: 6baf922dcff02ef409cf3b75a71ec239, type: 3}
   trianglePrefab: {fileID: 2349993566414616673, guid: 6f7cdbe4c063ee240a6e84934fa02839,
     type: 3}
   closePrefab: {fileID: 4818689719639064181, guid: 7e815b57506c376479d7d6e74533022f,
