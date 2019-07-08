@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleSceneControl : MonoBehaviour {
     private bool inTitle, inCredit;
-    public GameObject titleMenu, creditObj, backObj;
+    public GameObject titleMenu, creditObj, backObj, titleImageObj;
     public string sceneName;
     // public GameObject audioCtrlPrefab;
 
@@ -26,8 +26,10 @@ public class TitleSceneControl : MonoBehaviour {
         if (inCredit && Input.GetKeyDown (KeyCode.Escape)) {
             inCredit = false;
             inTitle = true;
+            backObj.SetActive (false);
             creditObj.SetActive (false);
             titleMenu.SetActive (true);
+            titleImageObj.SetActive(true);
         }
     }
 
@@ -42,6 +44,7 @@ public class TitleSceneControl : MonoBehaviour {
         creditObj.SetActive (true);
         titleMenu.SetActive (false);
         backObj.SetActive (true);
+        titleImageObj.SetActive(false);
     }
     public void clickExit () {
         Application.Quit ();
@@ -52,5 +55,6 @@ public class TitleSceneControl : MonoBehaviour {
         backObj.SetActive (false);
         creditObj.SetActive (false);
         titleMenu.SetActive (true);
+        titleImageObj.SetActive(true);
     }
 }

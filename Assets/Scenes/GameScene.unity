@@ -262,6 +262,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 18614475003259403, guid: 9515016ec1bb1fc4a859db208eaa4e28,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9515016ec1bb1fc4a859db208eaa4e28, type: 3}
 --- !u!224 &144220249 stripped
@@ -660,7 +666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &383667918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +890,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToTitle
       objectReference: {fileID: 0}
+    - target: {fileID: 7984838812233286872, guid: fde79088a85783d40b788575c28844ea,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde79088a85783d40b788575c28844ea, type: 3}
 --- !u!224 &432969160 stripped
@@ -1108,6 +1120,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Restart
       objectReference: {fileID: 0}
+    - target: {fileID: 18614475003259403, guid: 9515016ec1bb1fc4a859db208eaa4e28,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9515016ec1bb1fc4a859db208eaa4e28, type: 3}
 --- !u!224 &513229523 stripped
@@ -1510,6 +1528,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToTitle
       objectReference: {fileID: 0}
+    - target: {fileID: 7984838812233286872, guid: fde79088a85783d40b788575c28844ea,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde79088a85783d40b788575c28844ea, type: 3}
 --- !u!224 &879342483 stripped
@@ -2921,7 +2945,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983, type: 3}
     m_FontSize: 72
     m_FontStyle: 0
     m_BestFit: 0
@@ -3000,7 +3024,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983, type: 3}
     m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
@@ -3593,7 +3617,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ff82c693f6c45a34a9052881260c0983, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
