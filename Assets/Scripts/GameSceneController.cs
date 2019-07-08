@@ -75,7 +75,7 @@ public class GameSceneController : MonoBehaviour {
             if (action != null)
                 action();
             fadeImageAnimator.transform.parent.gameObject.SetActive(false);
-        }, 1f);
+        }, 0.8f);
     }
 
     public void FadeOutEffect(Action action) {
@@ -86,7 +86,18 @@ public class GameSceneController : MonoBehaviour {
             if (action != null)
                 action();
             fadeImageAnimator.transform.parent.gameObject.SetActive(false);
-        }, 1f);
+        }, 0.8f);
+    }
+
+    public void FadeOutWhiteEffect(Action action) {
+        // 渐入
+        fadeImageAnimator.transform.parent.gameObject.SetActive(true);
+        fadeImageAnimator.Play("FadeOutWhite");
+        Delay(()=>{
+            if (action != null)
+                action();
+            fadeImageAnimator.transform.parent.gameObject.SetActive(false);
+        }, 0.8f);
     }
 
     void RealStart() {
@@ -275,6 +286,11 @@ public class GameSceneController : MonoBehaviour {
 
     #endregion
     public void goodEnd () {
-        SceneManager.LoadScene("GoodEnd");
+        gameRunning = false;
+        shakeCamera.screenShake(1f, 0.2f);
+        FadeOutWhiteEffect(null);
+        Delay(()=>{
+            SceneManager.LoadScene("GoodEnd");
+        }, 0.8f);
     }
 }
