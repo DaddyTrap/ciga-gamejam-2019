@@ -59,7 +59,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da84716105d39d44bb137022db22c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldGotoTutorial: 0
+  shouldGotoTutorial: 1
+  selectedDifficulty: 0
+  difficultyToWaves:
+  - {fileID: 11400000, guid: 0d1b181ca5ef4334da225407c8a1500c, type: 2}
+  - {fileID: 11400000, guid: 366988c8e70e8d8459ed8c433d9c140e, type: 2}
+  - {fileID: 11400000, guid: ef15db9ab47130d4182848c53833fe1c, type: 2}
+  - {fileID: 11400000, guid: 186eb6db16aacb04398a86629366066a, type: 2}
+  difficultyIndexToName:
+  - "\u7B80\u5355"
+  - "\u666E\u901A"
+  - "\u56F0\u96BE"
+  - "\u6781\u9650"
 --- !u!114 &8013884046088735275
 MonoBehaviour:
   m_ObjectHideFlags: 0

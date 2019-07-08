@@ -21,13 +21,13 @@ public class GameSceneController : MonoBehaviour {
     public Animator countdownAnimator;
 
     public WaveScriptable tutorialWaveScriptable;
-    public WaveScriptable stage1WaveScriptable;
+    // public WaveScriptable stage1WaveScriptable;
 
     public GameObject overCanvasTrue;
     public GameObject overCanvasDied;
 
-    [Header("Debug")]
-    public WaveScriptable[] waveScriptables;
+    // [Header("Debug")]
+    // public WaveScriptable[] waveScriptables;
     public Text waveHint;
 
     public bool gameRunning { get; set; }
@@ -51,8 +51,11 @@ public class GameSceneController : MonoBehaviour {
         // 判断使用哪一个关卡
         if (GameManager.Instance.shouldGotoTutorial) {
             stageWaves = tutorialWaveScriptable;
+            waveHint.text = "";
         } else {
-            stageWaves = stage1WaveScriptable;
+            // 如果不是到教程关，就根据难度选择关卡
+            stageWaves = GameManager.Instance.GetWaveScriptableByCurrentDifficulty();
+            waveHint.text = "难度：" + GameManager.Instance.GetCurrentDifficultyName();
         }
         // 计算总怪数
         foreach (var wave in stageWaves.waves) {
@@ -112,26 +115,26 @@ public class GameSceneController : MonoBehaviour {
         // }
 
         // For debug
-        if (Input.GetKeyDown("1")) {
-            stageWaves = waveScriptables[0];
-        }
-        if (Input.GetKeyDown("2")) {
-            stageWaves = waveScriptables[1];
-        }
-        if (Input.GetKeyDown("3")) {
-            stageWaves = waveScriptables[2];
-        }
-        if (Input.GetKeyDown("4")) {
-            stageWaves = waveScriptables[3];
-        }
-        waveHint.text = stageWaves.name;
+        // if (Input.GetKeyDown("1")) {
+        //     stageWaves = waveScriptables[0];
+        // }
+        // if (Input.GetKeyDown("2")) {
+        //     stageWaves = waveScriptables[1];
+        // }
+        // if (Input.GetKeyDown("3")) {
+        //     stageWaves = waveScriptables[2];
+        // }
+        // if (Input.GetKeyDown("4")) {
+        //     stageWaves = waveScriptables[3];
+        // }
+        // waveHint.text = stageWaves.name;
     }
 
     bool spawned80 = false;
     bool spawned140 = false;
     void CheckSpawnTriangle () {
         if (!GameManager.Instance.shouldGotoTutorial) {
-            if (!spawned80 && elapsedTime > 5f) {
+            if (!spawned80 && elapsedTime > 80f) {
                 spawned80 = true;
                 var triangle = enemyPool.getOneInstance(Shape.TRIANGLE, false);
                 triangle.transform.position = new Vector3(0, 6f, 0f);

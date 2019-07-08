@@ -2,35 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleSceneControl : MonoBehaviour {
     private bool inTitle, inCredit;
-    public GameObject titleMenu, creditObj, backObj, titleImageObj;
+    public GameObject titleObj, creditObj, backObj;
     public string sceneName;
     // public GameObject audioCtrlPrefab;
+
+    public Text difficultyText;
 
     void Start () {
         inTitle = true;
         inCredit = false;
-        // var audioInterface = GameObject.Instantiate (audioCtrlPrefab);
-        // GameObject.DontDestroyOnLoad (audioInterface);
         AudioInterface.Instance.playBGM (AudioInterface.Instance.TitleBGM);
+
+        UpdateDifficultyText();
     }
 
     // Update is called once per frame
     void Update () {
-        quitCredit ();
+        if (inCredit && Input.GetKeyDown (KeyCode.Escape)) {
+            quitCredit ();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y)) {
+            GameManager.Instance.SwitchDifficult();
+            UpdateDifficultyText();
+        }
+    }
+
+    void UpdateDifficultyText() {
+        difficultyText.text = "按 Y 调整难度，当前难度为：" +
+            GameManager.Instance.GetCurrentDifficultyName();
     }
 
     private void quitCredit () {
-        if (inCredit && Input.GetKeyDown (KeyCode.Escape)) {
-            inCredit = false;
-            inTitle = true;
-            backObj.SetActive (false);
-            creditObj.SetActive (false);
-            titleMenu.SetActive (true);
-            titleImageObj.SetActive(true);
-        }
+        inCredit = false;
+        inTitle = true;
+        backObj.SetActive (false);
+        creditObj.SetActive (false);
+
+        titleObj.SetActive(true);
     }
 
     public void clickStart () {
@@ -42,19 +55,16 @@ public class TitleSceneControl : MonoBehaviour {
         inCredit = true;
         inTitle = false;
         creditObj.SetActive (true);
-        titleMenu.SetActive (false);
         backObj.SetActive (true);
-        titleImageObj.SetActive(false);
+
+        titleObj.SetActive(false);
     }
     public void clickExit () {
         Application.Quit ();
     }
     public void clickBack () {
-        inCredit = false;
-        inTitle = true;
-        backObj.SetActive (false);
-        creditObj.SetActive (false);
-        titleMenu.SetActive (true);
-        titleImageObj.SetActive(true);
+        if (inCredit) {
+            quitCredit();
+        }
     }
 }

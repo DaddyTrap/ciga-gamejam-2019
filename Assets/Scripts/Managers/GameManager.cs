@@ -21,4 +21,31 @@ public class GameManager : MonoBehaviour {
     }
 
     public bool shouldGotoTutorial = true;
+    public Difficulty selectedDifficulty;
+    public WaveScriptable[] difficultyToWaves;
+
+    public Difficulty SwitchDifficult() {
+        selectedDifficulty = (Difficulty)(((int)selectedDifficulty + 1) % difficultyCount);
+        return selectedDifficulty;
+    }
+
+    public WaveScriptable GetWaveScriptableByCurrentDifficulty() {
+        return difficultyToWaves[(int)selectedDifficulty];
+    }
+
+    public string GetCurrentDifficultyName() {
+        return DifficultyEnumToName(selectedDifficulty);
+    }
+
+    public enum Difficulty {
+        EASY = 0,
+        NORMAL,
+        HARD,
+        EXTREME,
+    }
+    private readonly int difficultyCount = 4;
+    public string[] difficultyIndexToName;
+    public string DifficultyEnumToName(Difficulty difficulty) {
+        return difficultyIndexToName[(int)difficulty];
+    }
 }
